@@ -1,0 +1,23 @@
+Package: plotPlotR
+Type: Package
+Title: Field experiment plot creation, segmentation and manipulation
+Version: 0.1.0
+Author: c(person("Aswin", "Singaram Natarajan", , "sin17m@csiro.au", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8981-6353")),
+        person("Todd", "Collins", , "col469@csiro.au", role = c("ctb"),
+           comment = c(ORCID = "0000-0001-8981-6353")))
+Maintainer: Aswin Singaram Natarajan <sin17m@csiro.au>
+Description: Set of functions to easily create and manipulate field experiment 
+    layout using "sf" and "dplyr" packages. Users can input sf objects or table 
+    as data frame to generate plot boundaries from 4 corners or from center point 
+    of plots etc. Users can move individual plots, rows or ranges. 
+Imports:
+    dplyr (>= 1.1.4),
+    magrittr (>= 2.0.3),
+    sf (>= 1.0-15)
+Depends:
+    R (>= 2.10)
+License: AGPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
