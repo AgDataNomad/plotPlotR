@@ -4,7 +4,7 @@
 \alias{corners_to_plots}
 \title{Generating plots from four corner points}
 \usage{
-corners_to_plots(sf_object, exp_length, exp_width, n_rows, n_ranges)
+corners_to_plots(sf_object, exp_length, exp_width, n_runs, n_ranges)
 }
 \arguments{
 \item{sf_object}{A sf object with geometry of 4 POINTS or a data frame with four rows of X,Y (Longitude and Latitude)}
@@ -13,7 +13,7 @@ corners_to_plots(sf_object, exp_length, exp_width, n_rows, n_ranges)
 
 \item{exp_width}{Total width of the experiment in unit meter}
 
-\item{n_rows}{Number of rows in the experiment, typically along the shorter side of the experiment.}
+\item{n_runs}{Number of runs in the experiment, typically along the shorter side of the experiment.}
 
 \item{n_ranges}{Number of ranges in the experiment, typically along the longer side of the experiment.}
 }
