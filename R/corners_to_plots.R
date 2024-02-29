@@ -9,14 +9,14 @@
 #' @param sf_object A sf object with geometry of 4 POINTS or a data frame with four rows of X,Y (Longitude and Latitude)
 #' @param exp_length Total length of the experiment in unit meter
 #' @param exp_width Total width of the experiment in unit meter
-#' @param n_rows Number of rows in the experiment, typically along the shorter side of the experiment.
+#' @param n_runs Number of runs in the experiment, typically along the shorter side of the experiment.
 #' @param n_ranges Number of ranges in the experiment, typically along the longer side of the experiment.
 #'
 #' @return A sf object of geometry MULTIPOLYGON with n_row X n_ranges features.
 #' @export
 #'
 #' @examples
-corners_to_plots <- function(sf_object, exp_length, exp_width, n_rows, n_ranges){
+corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges){
 
   if("sf" %in% class(sf_object)){
     sf_object
@@ -53,10 +53,9 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_rows, n_ranges)
     arrange(ord) %>%
     dplyr::summarise(do_union = FALSE) %>%
     st_cast("LINESTRING") %>%
-    st_cast("POLYGON") %>%
-    st_cast("MULTIPOLYGON")
+    st_cast("POLYGON")
 
-  bp_grid <- st_make_grid(bp_coords_, n=c(n_rows, n_ranges))
+  bp_grid <- st_make_grid(bp_coords_, n=c(n_runs, n_ranges))
 
   bp_centers <- st_centroid(bp_grid)
 
@@ -65,6 +64,8 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_rows, n_ranges)
   plot_centers <- (bp_grid - centrd) * rot_shape(rotation_angle) + centrd
 
   plot_centers <- (st_geometry(plot_centers)-st_centroid(plot_centers))*0.9+st_centroid(plot_centers)
+
+  plot_centers <- st_as_sf(plot_centers)
 
   return(plot_centers)
 
