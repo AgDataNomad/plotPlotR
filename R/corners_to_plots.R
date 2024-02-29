@@ -16,6 +16,11 @@
 #' @export
 #'
 #' @examples
+#'
+#'corners_to_plots(corners_dat_csv, 80, 24.2, 11, 24)
+#'
+#'plot(corners_to_plots)
+#'
 corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges){
 
   if("sf" %in% class(sf_object)){
