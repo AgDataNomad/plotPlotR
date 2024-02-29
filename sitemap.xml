@@ -28,10 +28,13 @@
     <loc>https://sin17m.github.io/plotPlotR/reference/addRunRange.html</loc>
   </url>
   <url>
-    <loc>https://sin17m.github.io/plotPlotR/reference/corners_dat_csv.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/cornersData.html</loc>
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/corners_to_plots.html</loc>
+  </url>
+  <url>
+    <loc>https://sin17m.github.io/plotPlotR/reference/find_offsets.html</loc>
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/index.html</loc>

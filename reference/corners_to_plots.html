@@ -14,7 +14,7 @@ and produces a sf object with geometry type MULTIPOLYGON. *Recommended to use CR
     
     <a class="navbar-brand me-2" href="../index.html">plotPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.05</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,33 +89,16 @@ and produces a sf object with geometry type MULTIPOLYGON. *Recommended to use CR
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A sf object of geometry MULTIPOLYGON with n_row X n_ranges features.</p>
+<p>A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">corners_to_plots</span><span class="op">(</span><span class="va">corners_dat_csv</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">24</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 264 features and 0 fields</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 133.81607371014 ymin: -75.0737996413086 xmax: 163.558101164205 ymax: 6.1332597874374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CRS:           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> First 10 features:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                 x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  POLYGON ((139.642314406384 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  POLYGON ((141.836423283248 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  POLYGON ((144.030532160113 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  POLYGON ((146.224641036977 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  POLYGON ((148.418749913841 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  POLYGON ((150.612858790705 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  POLYGON ((152.80696766757 -...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  POLYGON ((155.001076544434 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  POLYGON ((157.195185421298 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 POLYGON ((159.389294298162 ...</span>
+<span class="r-in"><span><span class="va">plots_dat</span> <span class="op">&lt;-</span> <span class="fu">corners_to_plots</span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">24</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">corners_to_plots</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in UseMethod("rename"):</span> no applicable method for 'rename' applied to an object of class "c('double', 'numeric')"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_dat</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="corners_to_plots-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
