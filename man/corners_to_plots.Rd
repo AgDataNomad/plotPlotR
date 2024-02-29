@@ -25,3 +25,10 @@ This functions takes a sf object or similar with 4 corners of an field experimen
 find its center and rotation angle, make new plots based on other parameters
 and produces a sf object with geometry type MULTIPOLYGON. *Recommended to use CRS that are in unit m*.
 }
+\examples{
+
+corners_to_plots(corners_dat_csv, 80, 24.2, 11, 24)
+
+plot(corners_to_plots)
+
+}
