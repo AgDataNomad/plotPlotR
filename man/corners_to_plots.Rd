@@ -18,7 +18,7 @@ corners_to_plots(sf_object, exp_length, exp_width, n_runs, n_ranges)
 \item{n_ranges}{Number of ranges in the experiment, typically along the longer side of the experiment.}
 }
 \value{
-A sf object of geometry MULTIPOLYGON with n_row X n_ranges features.
+A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.
 }
 \description{
 This functions takes a sf object or similar with 4 corners of an field experiment,
@@ -27,8 +27,8 @@ and produces a sf object with geometry type MULTIPOLYGON. *Recommended to use CR
 }
 \examples{
 
-corners_to_plots(corners_dat_csv, 80, 24.2, 11, 24)
+plots_dat <- corners_to_plots(cornersData, 80, 24.2, 11, 24)
 
-plot(corners_to_plots)
+plot(plots_dat)
 
 }

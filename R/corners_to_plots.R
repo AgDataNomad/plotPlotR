@@ -12,14 +12,14 @@
 #' @param n_runs Number of runs in the experiment, typically along the shorter side of the experiment.
 #' @param n_ranges Number of ranges in the experiment, typically along the longer side of the experiment.
 #'
-#' @return A sf object of geometry MULTIPOLYGON with n_row X n_ranges features.
+#' @return A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.
 #' @export
 #'
 #' @examples
 #'
-#'corners_to_plots(corners_dat_csv, 80, 24.2, 11, 24)
+#'plots_dat <- corners_to_plots(cornersData, 80, 24.2, 11, 24)
 #'
-#'plot(corners_to_plots)
+#'plot(plots_dat)
 #'
 corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges){
 

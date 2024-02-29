@@ -19,6 +19,6 @@ Converting coordinate to a unit M CRS
 }
 \examples{
 
-wgs84_to_unitM(corners_dat_csv, 28355)
+wgs84_to_unitM(cornersData, 28355)
 
 }

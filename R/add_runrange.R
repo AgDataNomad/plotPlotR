@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' a <- corners_to_plots(sf_object = corners_dat_csv, exp_length = 80, exp_width = 24.2, n_runs = 11, n_ranges = 20)
+#' a <- corners_to_plots(sf_object = cornersData, exp_length = 80, exp_width = 24.2, n_runs = 11, n_ranges = 20)
 #'
 #' a_w_RunRange <- addRunRange(a, "BL")
 #'

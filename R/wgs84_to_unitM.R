@@ -8,7 +8,7 @@
 #'
 #' @examples
 #'
-#' wgs84_to_unitM(corners_dat_csv, 28355)
+#' wgs84_to_unitM(cornersData, 28355)
 #'
 wgs84_to_unitM <- function(sf_object, CRSinMeters){
 
