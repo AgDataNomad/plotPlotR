@@ -11,6 +11,8 @@
 #' @examples
 rot_angle <- function(sf_object){
 
+  options(digits = 20)
+
   if("sf" %in% class(sf_object)){
     sf_object
   } else {
@@ -21,11 +23,16 @@ rot_angle <- function(sf_object){
 
   suppressWarnings(corners_poly <- sf_object %>%
                      st_centroid() %>%
-                     st_coordinates() %>%
-                     as.data.frame.matrix() %>%
-                     filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y))))
+                     st_coordinates())
 
-  if (max(diff(corners_poly$X))<max(diff(corners_poly$Y))) {
+
+  corners_poly <- as.data.frame.matrix(corners_poly) %>%
+    filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y)))
+
+  x_dist <- max(corners_poly$X)-min(corners_poly$X)
+  y_dist <- max(corners_poly$Y)-min(corners_poly$Y)
+
+  if (x_dist<y_dist) {
     corners_poly <- corners_poly %>%
       arrange(Y, X)
   } else {
