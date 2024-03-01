@@ -14,5 +14,11 @@ A numeric value of angle in radians
 }
 \description{
 This function takes a sf object of geometry MULTIPOLYGON or POINT and find it rotation on it center.
-For example, a perfect North facing field experiment has a rotation of Zero degrees, East would be 90 degrees and so on.
+For example, a perfect North facing field experiment has a rotation of Zero degrees,
+East would be 90 degrees and so on. Make sure data in Longitude or X and Latitude or Y order
+}
+\examples{
+
+rot_angle(cornersData)
+
 }
