@@ -74,13 +74,13 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in sf_object %&gt;% rename(X = 1, Y = 2) %&gt;% st_as_sf(coords = c("X",     "Y")):</span> could not find function "%&gt;%"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dat_w_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat</span>, <span class="st">"BL"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'dat' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">find_offsets</span><span class="op">(</span><span class="va">dat_w_RR</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in st_centroid(sf_object):</span> could not find function "st_centroid"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       [,1]                    [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 2.1941088768642771356 -0.29253091361895422473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.1608920024904247903  3.98928886702595919544</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
