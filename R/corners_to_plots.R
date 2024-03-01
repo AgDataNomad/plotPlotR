@@ -25,6 +25,12 @@
 #'
 corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges){
 
+  a_ls <- ls()
+  a_c <- names(as.list(match.call()))[-1]
+  if (any(!a_ls %in% a_c)) {
+    stop(paste("missing values for", paste(setdiff(a_ls, a_c), collapse=", ")))
+  }
+
   if("sf" %in% class(sf_object)){
     sf_object
   } else {
