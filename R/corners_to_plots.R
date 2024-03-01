@@ -2,8 +2,8 @@
 #'
 #' This functions takes a sf object or similar with 4 corners of an field experiment,
 #' find its center and rotation angle, make new plots based on other parameters
-#' and produces a sf object with geometry type MULTIPOLYGON. *Recommended to use CRS that are in unit m*.
-#'
+#' and produces a sf object with geometry type MULTIPOLYGON. Recommended to use CRS that are in unit meters,
+#' see function `wgs84_to_unitM()`
 #'
 #'
 #' @param sf_object A sf object with geometry of 4 POINTS or a data frame with four rows of X,Y (Longitude and Latitude)
@@ -17,7 +17,9 @@
 #'
 #' @examples
 #'
-#'plots_dat <- corners_to_plots(cornersData, 80, 24.2, 11, 24)
+#'dat <- wgs84_to_unitM(cornersData, 28355)
+#'
+#'plots_dat <- corners_to_plots(dat, 80, 24.2, 11, 24)
 #'
 #'plot(plots_dat)
 #'
@@ -71,6 +73,12 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges)
   plot_centers <- (st_geometry(plot_centers)-st_centroid(plot_centers))*0.9+st_centroid(plot_centers)
 
   plot_centers <- st_as_sf(plot_centers)
+
+  if (is.na(st_crs(sf_object)$input)==TRUE){
+    plot_centers
+  } else {
+    st_crs(plot_centers) <- st_crs(sf_object)
+  }
 
   return(plot_centers)
 
