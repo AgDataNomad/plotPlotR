@@ -5,7 +5,8 @@ Version: 0.1.6
 Authors@R: c(
         person("Aswin", "Singaram Natarajan", , "sin17m@csiro.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8981-6353")),
-        person("Todd", "Collins", , "col469@csiro.au", role = c("ctb"))
+        person("Todd", "Collins", , "col469@csiro.au", role = c("aut", "ctb"),
+          comment = c(ORCID = "0000-0001-9286-0494"))
            )
 Maintainer: Aswin Singaram Natarajan <sin17m@csiro.au>
 Description: This package provides users with a set of tools to easily create and manipulate 
