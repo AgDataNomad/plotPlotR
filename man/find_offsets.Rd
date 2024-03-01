@@ -2,12 +2,16 @@
 % Please edit documentation in R/find_offsets.R
 \name{find_offsets}
 \alias{find_offsets}
-\title{Find offsets to move plots horizontally and,or vertically}
+\title{Find offsets to move plots horizontally and/or vertically}
 \usage{
-find_offsets(sf_object)
+find_offsets(sf_object, runAlias, rangeAlias)
 }
 \arguments{
 \item{sf_object}{A sf object of geometry POINT or POLYGON with Run and Range fields}
+
+\item{runAlias}{Alias for Run in the sf object. Alias for Run could be row, run, Run, Row, ROW, RUN etc}
+
+\item{rangeAlias}{Alias for Range in the sf object. Alias for Range could range, Range, col, Column column etc}
 }
 \value{
 A matrix of X and Y offsets for horizontal and vertical shifts
@@ -17,10 +21,12 @@ Produces 1 plot unit offset values for moving the plots horizontally or vertical
 }
 \examples{
 
-dat <- corners_to_plots(cornersData, 80, 24.2, 11, 20)
+dat <- wgs84_to_unitM(cornersData, 28355) #28355 is a unit M CRS
 
-dat_w_RR <- addRunRange(dat, "BL")
+dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 
-find_offsets(dat_w_RR)
+dat_w_RR <- addRunRange(dat_plots, "BL")
+
+find_offsets(dat_w_RR, "Run", "Range")
 
 }
