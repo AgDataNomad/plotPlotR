@@ -14,10 +14,10 @@ find_offsets(sf_object, runAlias, rangeAlias)
 \item{rangeAlias}{Alias for Range in the sf object. Alias for Range could range, Range, col, Column column etc}
 }
 \value{
-A matrix of X and Y offsets for horizontal and vertical shifts
+A matrix of X and Y offsets for horizontal and vertical moves
 }
 \description{
-Produces 1 plot unit offset values for moving the plots horizontally or vertically. If you
+Calculates 1 meter offset values for moving the plots horizontally or vertically to account for any discrepencies during sowing.
 }
 \examples{
 
