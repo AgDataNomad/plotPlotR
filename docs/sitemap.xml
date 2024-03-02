@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/404.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/plotPlotR.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/articles/plotPlotR.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/addRunRange.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/addRunRange.html</loc>
   </url>
   <url>
-    <loc>/reference/cornersData.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/cornersData.html</loc>
   </url>
   <url>
-    <loc>/reference/corners_to_plots.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/corners_to_plots.html</loc>
   </url>
   <url>
-    <loc>/reference/find_offsets.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/find_offsets.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/multicorners_to_4corners.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/multicorners_to_4corners.html</loc>
   </url>
   <url>
-    <loc>/reference/rad_2_deg.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/rad_2_deg.html</loc>
   </url>
   <url>
-    <loc>/reference/rot_angle.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/rot_angle.html</loc>
   </url>
   <url>
-    <loc>/reference/rot_plots.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/rot_plots.html</loc>
   </url>
   <url>
-    <loc>/reference/rot_shape.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/rot_shape.html</loc>
   </url>
   <url>
-    <loc>/reference/wgs84_to_unitM.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/reference/wgs84_to_unitM.html</loc>
   </url>
 </urlset>
