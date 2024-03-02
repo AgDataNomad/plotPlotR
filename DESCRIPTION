@@ -1,7 +1,7 @@
 Package: plotPlotR
 Type: Package
 Title: Field experiment plot creation, segmentation and manipulation
-Version: 0.1.6
+Version: 0.1.6.9001
 Authors@R: c(
         person("Aswin", "Singaram Natarajan", , "sin17m@csiro.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8981-6353")),
