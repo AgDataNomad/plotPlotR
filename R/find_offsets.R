@@ -69,6 +69,10 @@ find_offsets <- function(sf_object, runAlias, rangeAlias){
   colnames(a) <- c("horizontal_move", "vertical_move")
   rownames(a) <- c("X_offset", "Y_offset")
 
+  offset_env <<- new.env()
+
+  assign("offset_values", a, offset_env)
+
   return(a)
 
 }
