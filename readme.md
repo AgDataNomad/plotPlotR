@@ -1,16 +1,60 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # plotPlotR
 
-**plotPlotR** referring to plot plotter is a package containing set of functions to create plots on a field trial as segments or boundaries in a field experiment.
+<!-- badges: start -->
+<!-- badges: end -->
 
-The functions are based on the implementation of "**sf**" package in R and a takes syntax of dplyr and magrittr packages. The package provides set of functions that are simple for R users to create or manipulate plot boundaries. Users who may not be familiar with spatial data or want functions that can be used easily, repeatedly can use this package.
+The Agricultural research and management operations in farms are
+increasingly becoming digital. Depending on the applications, the
+equipment used in farm operations and data collection are now
+increasingly connected to the internet, satellites and generates rich
+meta-data.
 
-The package is being updated regularly and more functions are added. To use latest functions please re-install package. For any issues report it at the [github issues](https://github.com/sin17m/plotPlotR/issues).
+**plotPlotR** referring to plot plotter is a package containing set of
+functions to create plots on a field trial as segments or boundaries in
+a field experiment.
+
+The functions are based on the implementation of “**sf**” package in R
+and a takes syntax of dplyr and magrittr packages. The package provides
+set of functions that are simple for R users to create or manipulate
+plot boundaries. Users who may not be familiar with spatial data or want
+functions that can be used easily, repeatedly can use this package.
 
 ## Installation
 
-plotPlotR can be installed locally with `devtools::install_github("sin17m/plotPlotR")`
+You can install the development version of plotPlotR from
+[GitHub](https://github.com/sin17m/plotplotr) with:
 
-## Website
+``` r
+# install.packages("devtools")
+devtools::install_github("sin17m/plotplotr")
+```
 
-Follow <https://sin17m.github.io/plotPlotR/> for functions, updates etc
-use
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(plotPlotR)
+## basic example code
+
+cornersData # a data frame with 4 XY points referring to the four corners of an experiment
+#>          X         Y id
+#> 1 148.6870 -34.47064  1
+#> 2 148.6873 -34.47062  4
+#> 3 148.6869 -34.46992  2
+#> 4 148.6872 -34.46990  3
+
+dat_unit_m <- wgs84_to_unitM(cornersData, 28355) # converting to unit M CRS
+#Above step is optional but recommended
+
+dat_plots <- corners_to_plots(dat_unit_m, 80, 24.2, 11, 20)
+
+dat_RR <- addRunRange(dat_plots, "BL")
+
+plot(dat_RR)
+```
+
+<img src="man/figures/README-example-1.png" width="100%" />
