@@ -6,12 +6,6 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The Agricultural research and management operations in farms are
-increasingly becoming digital. Depending on the applications, the
-equipment used in farm operations and data collection are now
-increasingly connected to the internet, satellites and generates rich
-meta-data.
-
 **plotPlotR** referring to plot plotter is a package containing set of
 functions to create plots on a field trial as segments or boundaries in
 a field experiment.
@@ -21,6 +15,12 @@ and a takes syntax of dplyr and magrittr packages. The package provides
 set of functions that are simple for R users to create or manipulate
 plot boundaries. Users who may not be familiar with spatial data or want
 functions that can be used easily, repeatedly can use this package.
+
+Agricultural research and farm management are increasingly becoming
+digital. Depending on the applications, the equipment used in farm
+operations and data collection are connected to the internet, satellites
+and generates rich meta-data. These meta-data has the potential to
+become key research support tools that generates new opportunity.
 
 ## Installation
 
@@ -38,7 +38,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(plotPlotR)
-## basic example code
+## A simple function to create plot layout with corner points from a csv file
 
 cornersData # a data frame with 4 XY points referring to the four corners of an experiment
 #>          X         Y id
