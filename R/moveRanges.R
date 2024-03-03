@@ -20,7 +20,7 @@
 #'
 #' find_offsets(dat_plots_RR, "Run", "Range")
 #'
-#' moved_plots <- movePlotRanges(dat_plots_RR, "right", 0.5, c(1,3,5))
+#' moved_plots <- movePlotRanges(dat_plots_RR, "right", 0.1, c(1,3,5))
 #'
 #' plot(moved_plots)
 #'
