@@ -1,4 +1,4 @@
-# plotPlotR (development version)
+# plotPlotR 0.2.0
 
 # plotPlotR 0.1.6
 
