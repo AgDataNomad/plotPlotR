@@ -49,16 +49,41 @@
 
 <div id="plotplotr" class="section level1">
 
+<!-- badges: start -->
+<!-- badges: end -->
+<p>The Agricultural research and management operations in farms are increasingly becoming digital. Depending on the applications, the equipment used in farm operations and data collection are now increasingly connected to the internet, satellites and generates rich meta-data.</p>
 <p><strong>plotPlotR</strong> referring to plot plotter is a package containing set of functions to create plots on a field trial as segments or boundaries in a field experiment.</p>
 <p>The functions are based on the implementation of “<strong>sf</strong>” package in R and a takes syntax of dplyr and magrittr packages. The package provides set of functions that are simple for R users to create or manipulate plot boundaries. Users who may not be familiar with spatial data or want functions that can be used easily, repeatedly can use this package.</p>
-<p>The package is being updated regularly and more functions are added. To use latest functions please re-install package. For any issues report it at the <a href="https://github.com/sin17m/plotPlotR/issues" class="external-link">github issues</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
-<p>plotPlotR can be installed locally with <code>devtools::install_github("sin17m/plotPlotR")</code></p>
+<p>You can install the development version of plotPlotR from <a href="https://github.com/sin17m/plotplotr" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"sin17m/plotplotr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="website">Website<a class="anchor" aria-label="anchor" href="#website"></a></h2>
-<p>Follow <a href="https://sin17m.github.io/plotPlotR/" class="uri">https://sin17m.github.io/plotPlotR/</a> for functions, updates etc use</p>
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a></h2>
+<p>This is a basic example which shows you how to solve a common problem:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sin17m/plotplotr" class="external-link">plotPlotR</a></span><span class="op">)</span></span>
+<span><span class="co">## basic example code</span></span>
+<span></span>
+<span><span class="va">cornersData</span> <span class="co"># a data frame with 4 XY points referring to the four corners of an experiment</span></span>
+<span><span class="co">#&gt;          X         Y id</span></span>
+<span><span class="co">#&gt; 1 148.6870 -34.47064  1</span></span>
+<span><span class="co">#&gt; 2 148.6873 -34.47062  4</span></span>
+<span><span class="co">#&gt; 3 148.6869 -34.46992  2</span></span>
+<span><span class="co">#&gt; 4 148.6872 -34.46990  3</span></span>
+<span></span>
+<span><span class="va">dat_unit_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wgs84_to_unitM.html">wgs84_to_unitM</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">28355</span><span class="op">)</span> <span class="co"># converting to unit M CRS</span></span>
+<span><span class="co">#Above step is optional but recommended</span></span>
+<span></span>
+<span><span class="va">dat_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">dat_unit_m</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat_plots</span>, <span class="st">"BL"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">dat_RR</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="100%"></p>
 </div>
 </div>
 
