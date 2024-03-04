@@ -19,11 +19,13 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-**plotPlotR** referring to plot plotter is a package containing set of functions to create plots on a field trial as segments or boundaries in a field experiment.
+**plotPlotR** referring to plot plotter is a package containing set of functions to create plot layouts on field trial as segments or boundaries for the purposes of extracting value from each plot or adding new data against each plot.
 
-The functions are based on the implementation of "**sf**" package in R and a takes syntax of dplyr and magrittr packages. The package provides set of functions that are simple for R users to create or manipulate plot boundaries. Users who may not be familiar with spatial data or want functions that can be used easily, repeatedly can use this package.
+The functions are based on the implementation of "**sf**" package in R and it provides users with a set of tools that are simple for R users to create or manipulate plot boundaries. Users who may not be familiar with spatial data or want functions that can be used easily, repeatedly and in a automated way can use this package.
 
-Agricultural research and farm management are increasingly becoming digital. Depending on the applications, the equipment used in farm operations and data collection are connected to the internet, satellites and generates rich meta-data. These meta-data has the potential to become key research support tools that generates new opportunity.
+Agricultural research and farm management are increasingly becoming digital. Equipment used in farm operations and data collection are often connected to the internet, satellites and generates rich meta-data. These meta-data has the potential to become key research support tools that generates new opportunity.
+
+**plotPlotR** aims to use the GPS data from the connected devices to develop tools that supports agricultural research and farm management. Since it is spatial data we are talking about, the applications of this package extend beyond agriculture to preserving biodiverstity, land management, soil conservation etc.
 
 ## Installation
 
@@ -36,7 +38,7 @@ devtools::install_github("sin17m/plotplotr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to create plot boundaries:
 
 ```{r example}
 library(plotPlotR)

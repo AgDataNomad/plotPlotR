@@ -20,20 +20,43 @@ library(plotPlotR)
 
 ## Introduction
 
-plotPlotR is a package developed to provide R users involved in field experiments to create or manipulate geo-spatial plot layouts. This package is small and has a handful of functions to perform QGIS like field plot creation, manipulation which then can be used to extract values from raster etc.
+**plotPlotR** package is developed to provide R users involved in field experiments to create or manipulate geo-spatial plot layouts for their experiments. This package is small and has a handful of functions to perform QGIS like field plot creation and manipulation which then can be used to extract values from different types of raster or adding values to plots and create shapefiles etc.
 
-This package is particularly useful to you, if you working on spatial raster from UAV or if you want to associate non-spatial data to your data.
+This package is particularly useful for users when working on raster data generated from UAVs or if users want to associate non-spatial data to the plot data.
 
-The core of plotPlotR is the creation of plot segments. If you have obtained corner points from Google Maps, Google Earth, tractor sensors or from a GPS survey tool, then you will be able to create plots easily using functions in this package. You can also assign Run and Range values to your plots which then can then be moved both vertically and horizontally.
+The core of plotPlotR is the creation of plot segments. If you have obtained corner points from [Google Maps](https://www.google.com/maps), [Google Earth](https://earth.google.com/web/), GPS sensors on farm machine or from a GPS survey tool, then you will be able to create plots easily using the functions in this package. You can also assign Run and Range values to your plots which then can then be moved both vertically and horizontally to account for any discrepancies.
 
 This package provide user friendly functions to deal with field plot creation and manipulation.
 
 ## Good to know
 
--   It is recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses [28355](https://epsg.io/28355), as we the developers are based in Australia.
--   Be familiar with the terminology used in this package. People who are in familiar with field operations may find the arguments terminology new. Please refer to functions help menu or [reference](https://sin17m.github.io/plotPlotR/reference/index.html) if you need clarity. Below examples are some you may not be familiar with.
+-   It is strongly recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses [28355](https://epsg.io/28355), as we the developers are based in Australia.
+
+-   Be familiar with the terminology used in this package. People who are in familiar with field operations may find the arguments terminology new. Please refer to functions help menu or [reference](https://sin17m.github.io/plotPlotR/reference/index.html) for more information. Below examples contains some terminology you may not be familiar with but are used extensively in this package.
+
     -   `Run` is plots along tractor runs
     -   `Range` is the other axis
     -   `exp_length` refers to length of your experiment (length of Runs)
     -   `exp_width` refers to width of your experiment
--   The package doesn't call user to provide precise direction in North, South, East, West. This is because it is field experiments are not in aligned to any one direction and some users may not correctly record the precise direction. Lot of functions in this package uses relative terms like, up, down, left, right, top and bottom. When you use an function this will be clear.
+
+-   The package doesn't call user to provide precise direction in North, South, East, West in most case. This is because, field experiments are not in aligned to any one direction and some users may not be able to precisely capture and record that information. Lot of functions in this package uses relative terms like, up, down, left, right, top and bottom. We believe this is easier for users to understand and use. Please refer to the documentation of functions where those relative terms are used.
+
+## Experiment layout
+
+An experiment layout for the purposes of this package is a rectangular grid layout, where each smaller rectangles are plots. The plots can be represented by its position on two axis, `Run` and `Range`. Plots along the direction of the tractor travel are called `Run` and plots on the other axis are called `Range`.
+
+The experiments themselves has experiment length `exp_length` which is akin to the length of a `Run` and experiment width `exp_width` referring to the length of a `Range`. `exp_length` is measure plot length with gap multiplied by the number of ranges and `exp_width` is tractor wheel width multiplied by the number of runs. Each run maximum number of ranges and vice versa.
+
+For several practical reasons, in most cases, experiment length are typically longer than experiment width but good not to make assumptions. There may be some cases when your experiment is part of a larger experiment, you many fewer ranges than runs, in that case your experiment length might be smaller that experiment width.
+
+Run and Range may not the terminology you use. Rows, Runs, Row, Run, rowNo, runNo, row_Num, run_NUm are aliases for Runs that we have encountered. Similarly for Range, column, Column, col etc are used as alias. Tt is hard to deal with so many aliases, so try to be consistent and where needed provide what alias is being used in your experiment.
+
+```{r Experiment layout example}
+
+corners_to_plots(sf_object = cornersData, #package includes cornersData 
+                 exp_length = 80, #number of ranges multiplied by plot length including gaps
+                 exp_width = 24.2, #number of runs multiplied by tractor wheel width
+                 n_runs = 11, #total number of runs
+                 n_ranges = 20) #total number of ranges
+
+```
