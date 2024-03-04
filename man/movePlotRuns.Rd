@@ -31,6 +31,5 @@ find_offsets(dat_plots_RR, "Run", "Range")
 
 moved_plots <- movePlotRuns(dat_plots_RR, "up", 4, c(3,7))
 
-plot(moved_plots)
 
 }
