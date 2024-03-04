@@ -79,7 +79,62 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sin17m/plotplotr" class="external-link">plotPlotR</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>plotPlotR is a package developed to provide R users involved in field
+experiments to create or manipulate geo-spatial plot layouts. This
+package is small and has a handful of functions to perform QGIS like
+field plot creation, manipulation which then can be used to extract
+values from raster etc.</p>
+<p>This package is particularly useful to you, if you working on spatial
+raster from UAV or if you want to associate non-spatial data to your
+data.</p>
+<p>The core of plotPlotR is the creation of plot segments. If you have
+obtained corner points from Google Maps, Google Earth, tractor sensors
+or from a GPS survey tool, then you will be able to create plots easily
+using functions in this package. You can also assign Run and Range
+values to your plots which then can then be moved both vertically and
+horizontally.</p>
+<p>This package provide user friendly functions to deal with field plot
+creation and manipulation.</p>
+</div>
+<div class="section level2">
+<h2 id="good-to-know">Good to know<a class="anchor" aria-label="anchor" href="#good-to-know"></a>
+</h2>
+<ul>
+<li>It is recommended that you use a CRS that are in meters. Use
+<code>wgs84_to_unitM</code> function to convert WGS84 CRS to a CRS that
+is in unit meter. You may choose to use <a href="https://epsg.io/" class="external-link">epsg.io</a> to find the appropriate CRS for your
+region. The examples in this package uses <a href="https://epsg.io/28355" class="external-link">28355</a>, as we the developers are based
+in Australia.</li>
+<li>Be familiar with the terminology used in this package. People who
+are in familiar with field operations may find the arguments terminology
+new. Please refer to functions help menu or <a href="https://sin17m.github.io/plotPlotR/reference/index.html">reference</a>
+if you need clarity. Below examples are some you may not be familiar
+with.
+<ul>
+<li>
+<code>Run</code> is plots along tractor runs</li>
+<li>
+<code>Range</code> is the other axis</li>
+<li>
+<code>exp_length</code> refers to length of your experiment (length
+of Runs)</li>
+<li>
+<code>exp_width</code> refers to width of your experiment</li>
+</ul>
+</li>
+<li>The package doesn’t call user to provide precise direction in North,
+South, East, West. This is because it is field experiments are not in
+aligned to any one direction and some users may not correctly record the
+precise direction. Lot of functions in this package uses relative terms
+like, up, down, left, right, top and bottom. When you use an function
+this will be clear.</li>
+</ul>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
