@@ -17,3 +17,23 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(plotPlotR)
 ```
+
+## Introduction
+
+plotPlotR is a package developed to provide R users involved in field experiments to create or manipulate geo-spatial plot layouts. This package is small and has a handful of functions to perform QGIS like field plot creation, manipulation which then can be used to extract values from raster etc.
+
+This package is particularly useful to you, if you working on spatial raster from UAV or if you want to associate non-spatial data to your data.
+
+The core of plotPlotR is the creation of plot segments. If you have obtained corner points from Google Maps, Google Earth, tractor sensors or from a GPS survey tool, then you will be able to create plots easily using functions in this package. You can also assign Run and Range values to your plots which then can then be moved both vertically and horizontally.
+
+This package provide user friendly functions to deal with field plot creation and manipulation.
+
+## Good to know
+
+-   It is recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses [28355](https://epsg.io/28355), as we the developers are based in Australia.
+-   Be familiar with the terminology used in this package. People who are in familiar with field operations may find the arguments terminology new. Please refer to functions help menu or [reference](https://sin17m.github.io/plotPlotR/reference/index.html) if you need clarity. Below examples are some you may not be familiar with.
+    -   `Run` is plots along tractor runs
+    -   `Range` is the other axis
+    -   `exp_length` refers to length of your experiment (length of Runs)
+    -   `exp_width` refers to width of your experiment
+-   The package doesn't call user to provide precise direction in North, South, East, West. This is because it is field experiments are not in aligned to any one direction and some users may not correctly record the precise direction. Lot of functions in this package uses relative terms like, up, down, left, right, top and bottom. When you use an function this will be clear.
