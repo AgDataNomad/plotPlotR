@@ -1,4 +1,5 @@
 url: https://sin17m.github.io/plotPlotR/
+destination: docs
 template:
   bootstrap: 5
 
