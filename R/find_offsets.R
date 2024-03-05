@@ -21,6 +21,18 @@
 #'
 find_offsets <- function(sf_object, runAlias, rangeAlias){
 
+  if (missing(runAlias)){
+    runAlias <- "Run"
+  } else {
+    runAlias
+  }
+
+  if (missing(rangeAlias)){
+    rangeAlias <- "Range"
+  } else {
+    rangeAlias
+  }
+
   options(digits = 20)
 
   suppressWarnings(sf_coords <- st_centroid(sf_object))
