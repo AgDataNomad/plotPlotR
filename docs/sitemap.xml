@@ -37,6 +37,9 @@
     <loc>https://sin17m.github.io/plotPlotR/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://sin17m.github.io/plotPlotR/reference/make_split_plots.html</loc>
+  </url>
+  <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/movePlotRanges.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/multicorners_to_4corners.html</loc>
+  </url>
+  <url>
+    <loc>https://sin17m.github.io/plotPlotR/reference/points_to_plots.html</loc>
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/rad_2_deg.html</loc>

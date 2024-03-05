@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">plotPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,119 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sin17m/plotplotr" class="external-link">plotPlotR</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p><strong>plotPlotR</strong> package is developed to provide R users
+involved in field experiments to create or manipulate geo-spatial plot
+layouts for their experiments. This package is small and has a handful
+of functions to perform QGIS like field plot creation and manipulation
+which then can be used to extract values from different types of raster
+or adding values to plots and create shapefiles etc.</p>
+<p>This package is particularly useful for users when working on raster
+data generated from UAVs or if users want to associate non-spatial data
+to the plot data.</p>
+<p>The core of plotPlotR is the creation of plot segments. If you have
+obtained corner points from <a href="https://www.google.com/maps" class="external-link">Google
+Maps</a>, <a href="https://earth.google.com/web/" class="external-link">Google Earth</a>, GPS
+sensors on farm machine or from a GPS survey tool, then you will be able
+to create plots easily using the functions in this package. You can also
+assign Run and Range values to your plots which then can then be moved
+both vertically and horizontally to account for any discrepancies.</p>
+<p>This package provide user friendly functions to deal with field plot
+creation and manipulation.</p>
+</div>
+<div class="section level2">
+<h2 id="good-to-know">Good to know<a class="anchor" aria-label="anchor" href="#good-to-know"></a>
+</h2>
+<ul>
+<li><p>It is strongly recommended that you use a CRS that are in meters.
+Use <code>wgs84_to_unitM</code> function to convert WGS84 CRS to a CRS
+that is in unit meter. You may choose to use <a href="https://epsg.io/" class="external-link">epsg.io</a> to find the appropriate CRS for your
+region. The examples in this package uses <a href="https://epsg.io/28355" class="external-link">28355</a>, as we the developers are based
+in Australia.</p></li>
+<li>
+<p>Be familiar with the terminology used in this package. People who
+are in familiar with field operations may find the arguments terminology
+new. Please refer to functions help menu or <a href="https://sin17m.github.io/plotPlotR/reference/index.html">reference</a>
+for more information. Below examples contains some terminology you may
+not be familiar with but are used extensively in this package.</p>
+<ul>
+<li>
+<code>Run</code> is plots along tractor runs</li>
+<li>
+<code>Range</code> is the other axis</li>
+<li>
+<code>exp_length</code> refers to length of your experiment (length
+of Runs)</li>
+<li>
+<code>exp_width</code> refers to width of your experiment</li>
+</ul>
+</li>
+<li><p>The package doesn’t call user to provide precise direction in
+North, South, East, West in most case. This is because, field
+experiments are not in aligned to any one direction and some users may
+not be able to precisely capture and record that information. Lot of
+functions in this package uses relative terms like, up, down, left,
+right, top and bottom. We believe this is easier for users to understand
+and use. Please refer to the documentation of functions where those
+relative terms are used.</p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="experiment-layout">Experiment layout<a class="anchor" aria-label="anchor" href="#experiment-layout"></a>
+</h2>
+<p>An experiment layout for the purposes of this package is a
+rectangular grid layout, where each smaller rectangles are plots. The
+plots can be represented by its position on two axis, <code>Run</code>
+and <code>Range</code>. Plots along the direction of the tractor travel
+are called <code>Run</code> and plots on the other axis are called
+<code>Range</code>.</p>
+<p>The experiments themselves has experiment length
+<code>exp_length</code> which is akin to the length of a
+<code>Run</code> and experiment width <code>exp_width</code> referring
+to the length of a <code>Range</code>. <code>exp_length</code> is
+measure plot length with gap multiplied by the number of ranges and
+<code>exp_width</code> is tractor wheel width multiplied by the number
+of runs. Each run maximum number of ranges and vice versa.</p>
+<p>For several practical reasons, in most cases, experiment length are
+typically longer than experiment width but good not to make assumptions.
+There may be some cases when your experiment is part of a larger
+experiment, you many fewer ranges than runs, in that case your
+experiment length might be smaller that experiment width.</p>
+<p>Run and Range may not the terminology you use. Rows, Runs, Row, Run,
+rowNo, runNo, row_Num, run_NUm are aliases for Runs that we have
+encountered. Similarly for Range, column, Column, col etc are used as
+alias. Tt is hard to deal with so many aliases, so try to be consistent
+and where needed provide what alias is being used in your
+experiment.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">cornersData</span>, <span class="co">#package includes cornersData </span></span>
+<span>                 exp_length <span class="op">=</span> <span class="fl">80</span>, <span class="co">#number of ranges multiplied by plot length including gaps</span></span>
+<span>                 exp_width <span class="op">=</span> <span class="fl">24.2</span>, <span class="co">#number of runs multiplied by tractor wheel width</span></span>
+<span>                 n_runs <span class="op">=</span> <span class="fl">11</span>, <span class="co">#total number of runs</span></span>
+<span>                 n_ranges <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="co">#total number of ranges</span></span>
+<span><span class="co">#&gt; Simple feature collection with 220 features and 0 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 133.818511467753 ymin: -75.0405555674167 xmax: 163.555663406591 ymax: 6.10001571354551</span></span>
+<span><span class="co">#&gt; CRS:           NA</span></span>
+<span><span class="co">#&gt; First 10 features:</span></span>
+<span><span class="co">#&gt;                                 x</span></span>
+<span><span class="co">#&gt; 1  POLYGON ((139.6398766487705...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((141.8339855256348...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((144.0280944024990...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((146.2222032793633...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((148.4163121562276...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((150.6104210330919...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((152.8045299099561...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((154.9986387868204...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((157.1927476636847...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((159.3868565405489...</span></span></code></pre></div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
