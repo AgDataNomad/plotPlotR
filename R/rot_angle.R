@@ -31,7 +31,8 @@ rot_angle <- function(sf_object){
 
 
   corners_poly <- as.data.frame.matrix(corners_poly) %>%
-    filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y)))
+    filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y))) %>%
+    distinct(X,Y)
 
   x_dist <- max(corners_poly$X)-min(corners_poly$X)
   y_dist <- max(corners_poly$Y)-min(corners_poly$Y)
