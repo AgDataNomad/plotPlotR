@@ -32,11 +32,11 @@ management, soil conservation etc.
 ## Installation
 
 You can install the development version of plotPlotR from
-[GitHub](https://github.com/sin17m/plotplotr) with:
+[GitHub](https://github.com/AgDataNomad/plotPlotR) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("sin17m/plotplotr")
+devtools::install_github("AgDataNomad/plotPlotR")
 ```
 
 ## Example
