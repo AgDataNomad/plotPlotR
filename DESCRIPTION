@@ -26,5 +26,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-URL: https://github.com/sin17m/plotplotr, https://sin17m.github.io/plotPlotR/
-BugReports: https://github.com/sin17m/plotplotr/issues
+URL: https://github.com/sin17m/plotplotr, https://sin17m.github.io/plotPlotR/, https://github.com/AgDataNomad/plotPlotR
+BugReports: https://github.com/AgDataNomad/plotPlotR/issues
