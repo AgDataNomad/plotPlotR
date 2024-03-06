@@ -16,7 +16,7 @@
 #'
 #' dat <- wgs84_to_unitM(cornersData, 28355)
 #' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
-#' dat_plots_RR <- addRunRange(dat_plots, "BL")
+#' dat_plots_RR <- addRunRange(dat_plots, "BL", 11, 20)
 #'
 #' find_offsets(dat_plots_RR, "Run", "Range")
 #'
