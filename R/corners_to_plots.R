@@ -80,6 +80,8 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges)
 
   plot_centers <- st_as_sf(plot_centers)
 
+  st_geometry(plot_centers) <- "geometry"
+
   if (is.na(st_crs(sf_object)$input)==TRUE){
     plot_centers
   } else {

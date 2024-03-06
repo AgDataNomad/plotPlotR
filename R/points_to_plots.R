@@ -60,6 +60,8 @@ points_to_plots <- function(sf_obj, plot_length, plot_width){
 
   st_crs(rot_poly) <- st_crs(sf_obj)
 
+  st_geometry(rot_poly) <- "geometry"
+
   return(rot_poly)
 
 }

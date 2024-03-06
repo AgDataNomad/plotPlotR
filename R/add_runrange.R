@@ -6,6 +6,9 @@
 #'
 #' @param sf_object A sf object of geometry type POLYGON or MULTIPOLYGON
 #' @param run1_range1 Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.
+#' @param n_runs Numeric input, number of Runs in the experiment
+#' @param sf_object Numeric input, number of Ranges in the experiment
+#'
 #'
 #' @return A sf object with Run and Range columns added.
 #' @export
@@ -19,63 +22,63 @@
 #' a_w_RunRange <- addRunRange(a, "BL")
 #'
 #'
-addRunRange <- function(sf_object, run1_range1){
+addRunRange <- function(sf_object, run1_range1, n_runs, n_ranges){
 
   options(digits = 15)
 
   ra <- rot_angle(sf_object)
 
-  centrd <- st_centroid(st_geometry(sf_object))
+  sf_obj <- sf_object %>%
+    select(geometry) %>%
+    distinct_all()
+
+  centrd <- st_centroid(st_geometry(sf_obj))
 
   centrd <- st_centroid(st_union(centrd))
 
-  poly_straight <- (st_as_sfc(sf_object) - centrd) * rot_shape((360*pi/180)-ra) + centrd
+  poly_straight <- (st_as_sfc(sf_obj) - centrd) * rot_shape((360*pi/180)-ra) + centrd
 
   poly_straight <- st_centroid(poly_straight)
 
   poly_centers_df <- as.data.frame(st_coordinates(poly_straight))
 
-  plots_along_width <- length(unique(substring(poly_centers_df$X, 1, 10)))
-
-  plots_along_length <- length(unique(substring(poly_centers_df$Y, 1, 10)))
-
-  poly_centers_df$X1 <- as.numeric(substring(poly_centers_df$X, 1, 10))
-  poly_centers_df$Y1 <- as.numeric(substring(poly_centers_df$Y, 1, 11))
+  poly_centers_df$X1 <- round(poly_centers_df$X, 2)
+  poly_centers_df$Y1 <- round(poly_centers_df$Y, 2)
 
     if (run1_range1 == "TR") {
     poly_centers_df <- poly_centers_df %>%
       mutate(id = 1:n()) %>%
       arrange(Y1) %>%
-      mutate(range = rep(plots_along_length:1, each = plots_along_width)) %>%
+      mutate(range = rep(n_ranges:1, each = n_runs)) %>%
       arrange(range, X1) %>%
-      mutate(run = rep(plots_along_width:1, plots_along_length)) %>%
+      mutate(run = rep(n_runs:1, n_ranges)) %>%
       arrange(id) %>%
       select(-id)
     } else if (run1_range1 == "TL") {
       poly_centers_df <- poly_centers_df %>%
         mutate(id = 1:n()) %>%
         arrange(Y1) %>%
-        mutate(range = rep(plots_along_length:1, each = plots_along_width)) %>%
+        mutate(range = rep(n_ranges:1, each = n_runs)) %>%
         arrange(range, X1) %>%
-        mutate(run = rep(1:plots_along_width, plots_along_length)) %>%
+        mutate(run = rep(1:n_runs, n_ranges)) %>%
         arrange(id) %>%
         select(-id)
     } else if (run1_range1 == "BL") {
       poly_centers_df <- poly_centers_df %>%
         mutate(id = 1:n()) %>%
         arrange(Y1) %>%
-        mutate(range = rep(1:plots_along_length, each = plots_along_width)) %>%
+        mutate(range = rep(1:n_ranges, each = n_runs)) %>%
         arrange(range, X1) %>%
-        mutate(run = rep(1:plots_along_width, plots_along_length)) %>%
+        mutate(run = rep(1:n_runs, n_ranges)) %>%
         arrange(id) %>%
         select(-id)
     } else if (run1_range1 == "BR") {
       poly_centers_df <- poly_centers_df %>%
         mutate(id = 1:n()) %>%
         arrange(Y1) %>%
-        mutate(range = rep(1:plots_along_length, each = plots_along_width)) %>%
+        mutate(range = rep(1:n_ranges, each = n_runs)) %>%
         arrange(range, X1) %>%
-        mutate(run = rep(plots_along_width:1, plots_along_length)) %>%
+        mutate(run = rep(n_runs:1, n_ranges)) %>%
         arrange(id) %>%
         select(-id)
     }
