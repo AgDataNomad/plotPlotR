@@ -83,9 +83,15 @@ addRunRange <- function(sf_object, run1_range1, n_runs, n_ranges){
         select(-id)
     }
 
-  sf_object <- sf_object %>%
-    mutate(Run = poly_centers_df$run,
-           Range = poly_centers_df$range)
+  if (nrow(sf_object)==nrow(sf_obj)) {
+    sf_object <- sf_object %>%
+      mutate(Run = poly_centers_df$run,
+             Range = poly_centers_df$range)
+  } else {
+    sf_object <- sf_obj %>%
+      mutate(Run = poly_centers_df$run,
+             Range = poly_centers_df$range)
+    }
 
   return(sf_object)
 }
