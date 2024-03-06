@@ -56,7 +56,7 @@ find_offsets <- function(sf_object, runAlias, rangeAlias){
   run_len <- sf_coords %>%
     group_by(Run) %>%
     filter(Range %in% c(min(Range), max(Range))) %>%
-    arrange(Run) %>%
+    arrange(Run, Range) %>%
     mutate(diff_y = diff(Y),
            diff_x = diff(X)) %>%
     mutate(run_dist = sqrt(diff_y^2+diff_x^2))
@@ -67,7 +67,7 @@ find_offsets <- function(sf_object, runAlias, rangeAlias){
   range_len <- sf_coords %>%
     group_by(Range) %>%
     filter(Run %in% c(min(Run), max(Run))) %>%
-    arrange(Range) %>%
+    arrange(Range, Run) %>%
     mutate(diff_y = diff(Y),
            diff_x = diff(X)) %>%
     mutate(range_dist = sqrt(diff_y^2+diff_x^2))
