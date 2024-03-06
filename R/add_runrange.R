@@ -19,7 +19,7 @@
 #'                       exp_length = 80, exp_width = 24.2,
 #'                       n_runs = 11, n_ranges = 20)
 #'
-#' a_w_RunRange <- addRunRange(a, "BL")
+#' a_w_RunRange <- addRunRange(a, "BL", 11, 20)
 #'
 #'
 addRunRange <- function(sf_object, run1_range1, n_runs, n_ranges){
