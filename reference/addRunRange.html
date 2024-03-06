@@ -60,17 +60,21 @@ facing Northern end. Bottom is close to you, Top is away from you. Left on your 
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">addRunRange</span><span class="op">(</span><span class="va">sf_object</span>, <span class="va">run1_range1</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">addRunRange</span><span class="op">(</span><span class="va">sf_object</span>, <span class="va">run1_range1</span>, <span class="va">n_runs</span>, <span class="va">n_ranges</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>sf_object</dt>
-<dd><p>A sf object of geometry type POLYGON or MULTIPOLYGON</p></dd>
+<dd><p>Numeric input, number of Ranges in the experiment</p></dd>
 
 
 <dt>run1_range1</dt>
 <dd><p>Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.</p></dd>
+
+
+<dt>n_runs</dt>
+<dd><p>Numeric input, number of Runs in the experiment</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -88,6 +92,9 @@ facing Northern end. Bottom is close to you, Top is away from you. Left on your 
 <span class="r-in"><span>                      n_runs <span class="op">=</span> <span class="fl">11</span>, n_ranges <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">a_w_RunRange</span> <span class="op">&lt;-</span> <span class="fu">addRunRange</span><span class="op">(</span><span class="va">a</span>, <span class="st">"BL"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in mutate(., range = rep(1:n_ranges, each = n_runs)):</span> <span style="color: #00BBBB;">ℹ</span> In argument: `range = rep(1:n_ranges, each = n_runs)`.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> argument "n_ranges" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
