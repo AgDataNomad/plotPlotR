@@ -56,7 +56,7 @@ make_split_plots <- function(sf_obj, split_dist, split_into){
   if (split_into == 2) {
     split_sf <- bind_rows(left_sf, right_sf)
   } else {
-    split_sf <- bind_rows(left_sf, center_sf, right_sf)
+    split_sf <- bind_rows(left_sf, cen_sf, right_sf)
   }
 
   st_crs(split_sf) <- st_crs(sf_obj)

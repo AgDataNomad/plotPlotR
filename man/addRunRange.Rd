@@ -7,11 +7,13 @@
 addRunRange(sf_object, run1_range1, n_runs, n_ranges)
 }
 \arguments{
-\item{sf_object}{Numeric input, number of Ranges in the experiment}
+\item{sf_object}{A sf object of geometry type POLYGON or MULTIPOLYGON}
 
 \item{run1_range1}{Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.}
 
 \item{n_runs}{Numeric input, number of Runs in the experiment}
+
+\item{n_ranges}{Numeric input, number of Ranges in the experiment}
 }
 \value{
 A sf object with Run and Range columns added.
@@ -27,7 +29,7 @@ a <- corners_to_plots(sf_object = cornersData,
                       exp_length = 80, exp_width = 24.2,
                       n_runs = 11, n_ranges = 20)
 
-a_w_RunRange <- addRunRange(a, "BL")
+a_w_RunRange <- addRunRange(a, "BL", 11, 20)
 
 
 }
