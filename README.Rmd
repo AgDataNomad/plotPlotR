@@ -25,7 +25,7 @@ The functions are based on the implementation of "**sf**" package in R and it pr
 
 Agricultural research and farm management are increasingly becoming digital. Equipment used in farm operations and data collection are often connected to the internet, satellites and generates rich meta-data. These meta-data has the potential to become key research support tools that generates new opportunity.
 
-**plotPlotR** aims to use the GPS data from the connected devices to develop tools that supports agricultural research and farm management. Since it is spatial data we are talking about, the applications of this package extend beyond agriculture to preserving biodiverstity, land management, soil conservation etc.
+**plotPlotR** takes GPS data from the connected devices or manually collected coordinates from rasters or other sources to develop tools that supports agricultural research and farm management. Since it is spatial data we are talking about, the applications of this package extend beyond agriculture to preserving biodiverstity, land management, soil conservation etc.
 
 ## Installation
 

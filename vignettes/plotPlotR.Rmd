@@ -30,9 +30,9 @@ This package provide user friendly functions to deal with field plot creation an
 
 ## Good to know
 
--   It is strongly recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses [28355](https://epsg.io/28355), as we the developers are based in Australia.
+-   It is strongly recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses CRS [28355](https://epsg.io/28355), as we are based in Australia.
 
--   Be familiar with the terminology used in this package. People who are in familiar with field operations may find the arguments terminology new. Please refer to functions help menu or [reference](https://sin17m.github.io/plotPlotR/reference/index.html) for more information. Below examples contains some terminology you may not be familiar with but are used extensively in this package.
+-   Be familiar with the terminology used in this package. People who are not familiar with field operations may find the terminology used for arguments in functions new. Please refer to functions help menu or [reference](https://agdatanomad.github.io/plotPlotR/reference/index.html) for more information. Below examples contains some terminology you may not be familiar with but are used extensively in this package.
 
     -   `Run` is plots along tractor runs
     -   `Range` is the other axis
