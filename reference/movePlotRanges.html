@@ -91,16 +91,14 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="wgs84_to_unitM.html">wgs84_to_unitM</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">28355</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dat_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">dat_plots_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat_plots</span>, <span class="st">"BL"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in mutate(., range = rep(1:n_ranges, each = n_runs)):</span> <span style="color: #00BBBB;">ℹ</span> In argument: `range = rep(1:n_ranges, each = n_runs)`.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> argument "n_ranges" is missing, with no default</span>
+<span class="r-in"><span><span class="va">dat_plots_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat_plots</span>, <span class="st">"BL"</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="find_offsets.html">find_offsets</a></span><span class="op">(</span><span class="va">dat_plots_RR</span>, <span class="st">"Run"</span>, <span class="st">"Range"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'dat_plots_RR' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  horizontal_move            vertical_move</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X_offset 0.997434830449050569001 -0.071580437326146842403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Y_offset 0.071580437321057538425  0.997434830448685305626</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">moved_plots</span> <span class="op">&lt;-</span> <span class="fu">movePlotRanges</span><span class="op">(</span><span class="va">dat_plots_RR</span>, <span class="st">"right"</span>, <span class="fl">0.1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'dat_plots_RR' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
