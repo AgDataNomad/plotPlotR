@@ -67,10 +67,49 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-This package provides users with a set of tools to easily create and manipulate 
-    field experiment plot boundaries in R. The functions are based on the underpinning of 
-    "sf" package implementation. 
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="plotplotr">plotPlotR<a class="anchor" aria-label="anchor" href="#plotplotr"></a>
+</h1></div>
+<!-- badges: start -->
+<!-- badges: end -->
+<p><strong>plotPlotR</strong> referring to plot plotter is a package containing set of functions to create plot layouts on field trial as segments or boundaries for the purposes of extracting value from each plot or adding new data against each plot.</p>
+<p>The functions are based on the implementation of “<strong>sf</strong>” package in R and it provides users with a set of tools that are simple for R users to create or manipulate plot boundaries. Users who may not be familiar with spatial data or want functions that can be used easily, repeatedly and in a automated way can use this package.</p>
+<p>Agricultural research and farm management are increasingly becoming digital. Equipment used in farm operations and data collection are often connected to the internet, satellites and generates rich meta-data. These meta-data has the potential to become key research support tools that generates new opportunity.</p>
+<p><strong>plotPlotR</strong> aims to use the GPS data from the connected devices to develop tools that supports agricultural research and farm management. Since it is spatial data we are talking about, the applications of this package extend beyond agriculture to preserving biodiverstity, land management, soil conservation etc.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of plotPlotR from <a href="https://github.com/AgDataNomad/plotPlotR" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"AgDataNomad/plotPlotR"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>This is a basic example which shows you how to create plot boundaries:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AgDataNomad/plotPlotR" class="external-link">plotPlotR</a></span><span class="op">)</span></span>
+<span><span class="co">## A simple function to create plot layout with corner points from a csv file</span></span>
+<span></span>
+<span><span class="va">cornersData</span> <span class="co"># a data frame with 4 XY points referring to the four corners of an experiment</span></span>
+<span><span class="co">#&gt;          X         Y id</span></span>
+<span><span class="co">#&gt; 1 148.6870 -34.47064  1</span></span>
+<span><span class="co">#&gt; 2 148.6873 -34.47062  4</span></span>
+<span><span class="co">#&gt; 3 148.6869 -34.46992  2</span></span>
+<span><span class="co">#&gt; 4 148.6872 -34.46990  3</span></span>
+<span></span>
+<span><span class="va">dat_unit_m</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wgs84_to_unitM.html">wgs84_to_unitM</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">28355</span><span class="op">)</span> <span class="co"># converting to unit M CRS</span></span>
+<span><span class="co">#Above step is optional but recommended</span></span>
+<span></span>
+<span><span class="va">dat_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">dat_unit_m</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat_plots</span>, <span class="st">"BL"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">dat_RR</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
