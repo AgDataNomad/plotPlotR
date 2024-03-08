@@ -4,6 +4,9 @@
     <loc>https://sin17m.github.io/plotPlotR/404.html</loc>
   </url>
   <url>
+    <loc>https://sin17m.github.io/plotPlotR/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>https://sin17m.github.io/plotPlotR/articles/index.html</loc>
   </url>
   <url>
@@ -16,10 +19,10 @@
     <loc>https://sin17m.github.io/plotPlotR/index.html</loc>
   </url>
   <url>
-    <loc>https://sin17m.github.io/plotPlotR/LICENSE.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/news/index.html</loc>
   </url>
   <url>
-    <loc>https://sin17m.github.io/plotPlotR/news/index.html</loc>
+    <loc>https://sin17m.github.io/plotPlotR/readme.html</loc>
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/addRunRange.html</loc>
@@ -52,6 +55,9 @@
     <loc>https://sin17m.github.io/plotPlotR/reference/rad_2_deg.html</loc>
   </url>
   <url>
+    <loc>https://sin17m.github.io/plotPlotR/reference/read_input_dat.html</loc>
+  </url>
+  <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/rot_angle.html</loc>
   </url>
   <url>
@@ -62,5 +68,8 @@
   </url>
   <url>
     <loc>https://sin17m.github.io/plotPlotR/reference/wgs84_to_unitM.html</loc>
+  </url>
+  <url>
+    <loc>https://sin17m.github.io/plotPlotR/reference/write_output.html</loc>
   </url>
 </urlset>
