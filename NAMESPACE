@@ -1,4 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 import(dplyr)
 importFrom(magrittr,"%>%")
+importFrom("utils", "read.csv")
 import(sf)
