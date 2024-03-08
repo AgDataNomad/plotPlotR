@@ -40,8 +40,8 @@ addRunRange <- function(sf_object, run1_range1){
 
   poly_centers_df <- as.data.frame(st_coordinates(poly_straight))
 
-  poly_centers_df$X1 <- round(poly_centers_df$X, 2)
-  poly_centers_df$Y1 <- round(poly_centers_df$Y, 2)
+  poly_centers_df$X1 <- round(poly_centers_df$X)
+  poly_centers_df$Y1 <- round(poly_centers_df$Y)
 
   n_runs <- length(unique(poly_centers_df$X1))
   n_ranges <- length(unique(poly_centers_df$Y1))
