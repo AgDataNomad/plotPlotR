@@ -3,18 +3,23 @@
 #' Splitting a single regular plot into two or three plots.
 #'
 #' @param sf_obj A sf object from a shape file, shp or geojson
-#' @param split_dist Numeric input in meters indicating amount of offset to use in creating new plots.
+#' @param split_dist Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.
 #' @param split_into Integer input, number of new plots to generate from one plot, takes 1 or 2
 #'
 #' @return A sf object with geometry POINT
 #' @export
 #'
 #' @examples
+#'
+#' dat <- wgs84_to_unitM(cornersData, 28355)
+#'
+#' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 22)
+#'
+#' dat_split_plots <- make_split_plots(dat_plots)
+#'
+#' plot(dat_split_plots)
+#'
 make_split_plots <- function(sf_obj, split_dist, split_into){
-
-  if (!"offset_env" %in% ls(envir=.GlobalEnv)){
-    stop("Run find_offsets first")
-  }
 
   if (missing(split_into)){
     split_into <-  2
@@ -28,15 +33,18 @@ make_split_plots <- function(sf_obj, split_dist, split_into){
     split_dist
   }
 
-  offset_values <- get("offset_values", envir = offset_env)
-
-  x_off <- offset_values[1]
-  y_off <- offset_values[2]
+  x_off <- -(cos(rot_angle(sf_obj)))
+  y_off <- (sin(rot_angle(sf_obj)))
 
   suppressWarnings(sf_cen <- sf_obj %>%
                      st_centroid() %>%
                      st_coordinates() %>%
                      as.data.frame())
+
+  sfc_df <- bind_cols(sf_cen, st_drop_geometry(sf_obj))
+
+  ardf <- sfc_df %>%
+    filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y)))
 
   sf_off <- data.frame(X = rep((split_dist*x_off), nrow(sf_cen)),
                        Y = rep((split_dist*y_off), nrow(sf_cen)))

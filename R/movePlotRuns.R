@@ -9,16 +9,14 @@
 #' @param moveDistance Numeric value in meters to move
 #' @param runSelection Numeric value or numeric vector of a subset of runs or all runs
 #'
-#' @return
+#' @return A sf object with modified Run(s)
 #' @export
 #'
 #' @examples
 #'
 #' dat <- wgs84_to_unitM(cornersData, 28355)
 #' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
-#' dat_plots_RR <- addRunRange(dat_plots, "BL", 11, 20)
-#'
-#' find_offsets(dat_plots_RR, "Run", "Range")
+#' dat_plots_RR <- addRunRange(dat_plots, "BL")
 #'
 #' moved_plots <- movePlotRuns(dat_plots_RR, "up", 4, c(3,7))
 #'
@@ -26,45 +24,78 @@
 #'
 movePlotRuns <- function(sf_obj, moveDirection, moveDistance, runSelection){
 
-  offset_values <- get("offset_values", offset_env)
-
-  if (moveDirection %in% c("up", "down")){
-    x_offset <- offset_values[3]
-    y_offset <- offset_values[4]
+  if (moveDirection %in% c("left", "right")){
+    x_offset <- abs(cos(rot_angle(sf_obj)))
+    y_offset <- abs(sin(rot_angle(sf_obj)))
   } else {
-    x_offset <- offset_values[1]
-    y_offset <- offset_values[1]
+    x_offset <- abs(sin(rot_angle(sf_obj)-pi))
+    y_offset <- abs(cos(rot_angle(sf_obj)-pi))
   }
 
-  suppressWarnings(sfc_df <- as.data.frame.matrix(st_coordinates(st_centroid(sf_obj))))
+  suppressWarnings(sfc_df <- as.data.frame(st_coordinates(st_centroid(sf_obj))))
 
-  sfc_df$Run <- sf_obj$Run
-  sfc_df$Range <- sf_obj$Range
+  sfc_df <- bind_cols(sfc_df, st_drop_geometry(sf_obj))
 
-  if (moveDirection %in% c("up", "right")) {
-    add_fac <- 1
-  } else {
-    add_fac <- -1
+  ardf <- sfc_df %>%
+    filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y)))
+
+  mvRunX <- ardf %>%
+    filter(Run == 1) %>%
+    arrange(Run, Range) %>%
+    pull(X) %>%
+    diff() %>%
+    sign()
+
+  mvRunY <- ardf %>%
+    filter(Run == 1) %>%
+    arrange(Run, Range) %>%
+    pull(Y) %>%
+    diff() %>%
+    sign()
+
+  mvRangeX <- ardf %>%
+    filter(Range == 1) %>%
+    arrange(Run, Range) %>%
+    pull(X) %>%
+    diff() %>%
+    sign()
+
+  mvRangeY <- ardf %>%
+    filter(Range == 1) %>%
+    arrange(Run, Range) %>%
+    pull(Y) %>%
+    diff() %>%
+    sign()
+
+  if (moveDirection == "left"){
+    addFacX <- -mvRangeX
+    addFacY <- -mvRangeY
+  } else if (moveDirection == "right"){
+    addFacX <- mvRangeX
+    addFacY <- mvRangeY
+  } else if (moveDirection == "up"){
+    addFacX <- mvRunX
+    addFacY <- mvRunY
+  } else if (moveDirection == "down"){
+    addFacX <- -mvRunX
+    addFacY <- -mvRunY
   }
 
   sfc_df <- sfc_df %>%
     mutate(X = if_else(Run %in% runSelection,
-                       (add_fac*moveDistance*x_offset), 0),
+                       (addFacX*moveDistance*x_offset), 0),
            Y = if_else(Run %in% runSelection,
-                       (add_fac*moveDistance*y_offset), 0))
+                       (addFacY*moveDistance*y_offset), 0))
 
   sfc <- st_as_sf(sfc_df, coords = c("X", "Y"))
 
-  sfc_g <- st_geometry(sfc)
-
-  sf_g <- st_geometry(sf_obj)
-
-  new_sf <- sf_g + sfc_g
+  new_sf <- st_geometry(sf_obj) + st_geometry(sfc)
 
   new_sf <- st_as_sf(new_sf)
 
-  new_sf$Run <- sf_obj$Run
-  new_sf$Range <- sf_obj$Range
+  new_sf <- bind_cols(new_sf, st_drop_geometry(sf_obj))
+
+  st_geometry(new_sf) <- "geometry"
 
   return(new_sf)
 

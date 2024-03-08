@@ -9,7 +9,7 @@ make_split_plots(sf_obj, split_dist, split_into)
 \arguments{
 \item{sf_obj}{A sf object from a shape file, shp or geojson}
 
-\item{split_dist}{Numeric input in meters indicating amount of offset to use in creating new plots.}
+\item{split_dist}{Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.}
 
 \item{split_into}{Integer input, number of new plots to generate from one plot, takes 1 or 2}
 }
@@ -18,4 +18,15 @@ A sf object with geometry POINT
 }
 \description{
 Splitting a single regular plot into two or three plots.
+}
+\examples{
+
+dat <- wgs84_to_unitM(cornersData, 28355)
+
+dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 22)
+
+dat_split_plots <- make_split_plots(dat_plots)
+
+plot(dat_split_plots)
+
 }

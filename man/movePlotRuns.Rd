@@ -15,6 +15,9 @@ movePlotRuns(sf_obj, moveDirection, moveDistance, runSelection)
 
 \item{runSelection}{Numeric value or numeric vector of a subset of runs or all runs}
 }
+\value{
+A sf object with modified Run(s)
+}
 \description{
 Run `find_offsets` before running `movePlotRuns`
 }
@@ -25,9 +28,7 @@ Move plots in your field experiment
 
 dat <- wgs84_to_unitM(cornersData, 28355)
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
-dat_plots_RR <- addRunRange(dat_plots, "BL", 11, 20)
-
-find_offsets(dat_plots_RR, "Run", "Range")
+dat_plots_RR <- addRunRange(dat_plots, "BL")
 
 moved_plots <- movePlotRuns(dat_plots_RR, "up", 4, c(3,7))
 
