@@ -6,8 +6,6 @@
 #'
 #' @param sf_object A sf object of geometry type POLYGON or MULTIPOLYGON
 #' @param run1_range1 Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.
-#' @param n_runs A numeric input of the total number of runs in your experiment
-#' @param n_ranges A numeric input of total number of ranges in your experiment
 #'
 #'
 #' @return A sf object with Run and Range columns added.
@@ -19,10 +17,10 @@
 #'                       exp_length = 80, exp_width = 24.2,
 #'                       n_runs = 11, n_ranges = 20)
 #'
-#' a_w_RunRange <- addRunRange(a, "BL", n_runs = 11, n_ranges = 20)
+#' a_w_RunRange <- addRunRange(a, "BL")
 #'
 #'
-addRunRange <- function(sf_object, run1_range1, n_runs, n_ranges){
+addRunRange <- function(sf_object, run1_range1){
 
   options(digits = 15)
 
@@ -41,6 +39,16 @@ addRunRange <- function(sf_object, run1_range1, n_runs, n_ranges){
   poly_straight <- st_centroid(poly_straight)
 
   poly_centers_df <- as.data.frame(st_coordinates(poly_straight))
+
+  pca_centers <- prcomp(poly_centers_df)
+
+  pca_centers <- pca_centers$x
+
+  n_ranges <- length(unique(round(pca_centers[,1])))
+  n_runs <- nrow(pca_centers)/n_ranges
+
+  rm(pca_centers)
+
 
   poly_centers_df$X1 <- round(poly_centers_df$X, 2)
   poly_centers_df$Y1 <- round(poly_centers_df$Y, 2)
