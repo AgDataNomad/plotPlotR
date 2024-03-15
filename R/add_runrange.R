@@ -19,7 +19,7 @@
 #'
 #' a_w_RunRange <- addRunRange(a, "BL")
 #'
-#' plot(a_w_RunRange 1)
+#' plot(a_w_RunRange)
 #'
 #'
 addRunRange <- function(sf_object, run1_range1){
