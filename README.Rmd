@@ -50,6 +50,8 @@ dat <- read_input_dat(cornersData, 4326, 28355) # Reading data and converting to
 
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 
+dat_plots <- addRunRange(dat_plots, "BL")
+
 plot(dat_plots)
 
 
