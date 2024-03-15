@@ -2,6 +2,8 @@
 #'
 #' Splitting a single regular plot into two or three plots.
 #'
+#' This is to support type of sowing where the seeder can sow more than one variety in each plot.
+#'
 #' @param sf_obj A sf object from a shape file, shp or geojson
 #' @param split_dist Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.
 #' @param split_into Integer input, number of new plots to generate from one plot, takes 1 or 2
@@ -11,7 +13,7 @@
 #'
 #' @examples
 #'
-#' dat <- wgs84_to_unitM(cornersData, 28355)
+#' dat <- read_input_dat(cornersData, 4326, 28355)
 #'
 #' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 22)
 #'

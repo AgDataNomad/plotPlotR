@@ -19,9 +19,12 @@ A sf object with geometry POINT
 \description{
 Splitting a single regular plot into two or three plots.
 }
+\details{
+This is to support type of sowing where the seeder can sow more than one variety in each plot.
+}
 \examples{
 
-dat <- wgs84_to_unitM(cornersData, 28355)
+dat <- read_input_dat(cornersData, 4326, 28355)
 
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 22)
 
