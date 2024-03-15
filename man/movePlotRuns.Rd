@@ -19,14 +19,18 @@ movePlotRuns(sf_obj, moveDirection, moveDistance, runSelection)
 A sf object with modified Run(s)
 }
 \description{
-Run `find_offsets` before running `movePlotRuns`
+Users can select a susbset of runs or all runs
 }
 \details{
+Move distance is in unit meters
+
+Move direction is in relation to the position of Run 1 and Range 1
+
 Move plots in your field experiment
 }
 \examples{
 
-dat <- wgs84_to_unitM(cornersData, 28355)
+dat <- read_input_dat(cornersData, 4326, 28355)
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 dat_plots_RR <- addRunRange(dat_plots, "BL")
 
