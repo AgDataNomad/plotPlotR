@@ -40,7 +40,7 @@ addRunRange <- function(sf_object, run1_range1){
 
   poly_centers_df <- as.data.frame(st_coordinates(poly_straight))
 
-  pca_centers <- prcomp(poly_centers_df)
+  pca_centers <- prcomp(poly_centers_df$Y)
 
   pca_centers <- pca_centers$x
 
