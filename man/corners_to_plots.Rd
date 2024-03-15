@@ -23,12 +23,18 @@ A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.
 \description{
 This functions takes a sf object or similar with 4 corners of an field experiment,
 find its center and rotation angle, make new plots based on other parameters
-and produces a sf object with geometry type MULTIPOLYGON. Recommended to use CRS that are in unit meters,
-see function `wgs84_to_unitM()`
+and produces a sf object with geometry type MULTIPOLYGON.
+}
+\details{
+Plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
+
+For custom plot size, use `make_plots()` function to adjust plot size and plot width
+
+Use `read_input_dat()` to bring you corners data
 }
 \examples{
 
-dat <- wgs84_to_unitM(cornersData, 28355)
+dat <- read_input_dat(cornersData)
 
 plots_dat <- corners_to_plots(dat, 80, 24.2, 11, 24)
 
