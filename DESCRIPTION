@@ -24,7 +24,9 @@ LazyData: true
 RoxygenNote: 7.3.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://github.com/AgDataNomad/plotPlotR
 BugReports: https://github.com/AgDataNomad/plotPlotR/issues
+Config/testthat/edition: 3
