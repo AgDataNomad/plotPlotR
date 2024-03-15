@@ -44,7 +44,7 @@ addRunRange <- function(sf_object, run1_range1){
 
   pca_centers <- pca_centers$x
 
-  n_ranges <- length(unique(round(pca_centers[,1])))
+  n_ranges <- as.numeric(length(unique(round(pca_centers[,1]))))
   n_runs <- nrow(pca_centers)/n_ranges
 
   rm(pca_centers)
