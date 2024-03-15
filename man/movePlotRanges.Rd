@@ -19,19 +19,25 @@ movePlotRanges(sf_obj, moveDirection, moveDistance, rangeSelection)
 a sf object of geometry POLYGON with Run and Range columns
 }
 \description{
-Run `find_offsets` before running `movePlotRanges`
+Users can select a subset of ranges or all ranges
 }
 \details{
-Move plots in your field experiment. This is unlikely as tractor sowing affects entire Run and almost never Ranges.
+Move distance is in unit meters
+
+Move direction is in relation to the position of Run 1 and Range 1
+
+Move plots in your field experiment.
+
+This is unlikely as tractor sowing affects entire Run and almost never a subset of Ranges.
 }
 \examples{
 
-dat <- wgs84_to_unitM(cornersData, 28355)
+dat <- read_input_dat(cornersData, 4326, 28355)
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 dat_plots_RR <- addRunRange(dat_plots, "BL")
 
 
-moved_plots <- movePlotRanges(dat_plots_RR, "right", 0.8, c(1,3,5))
+moved_plots <- movePlotRanges(dat_plots_RR, "right", 1.2, c(1,3,9))
 
 plot(moved_plots)
 
