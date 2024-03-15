@@ -55,14 +55,11 @@ cornersData # a data frame with 4 XY points referring to the four corners of an 
 #> 3 148.6869 -34.46992  2
 #> 4 148.6872 -34.46990  3
 
-dat_unit_m <- wgs84_to_unitM(cornersData, 28355) # converting to unit M CRS
-#Above step is optional but recommended
+dat <- read_input_dat(cornersData, 4326, 28355) # Reading data and converting to unit M CRS
 
-dat_plots <- corners_to_plots(dat_unit_m, 80, 24.2, 11, 20)
+dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 
-dat_RR <- addRunRange(dat_plots, "BL")
-
-plot(dat_RR)
+plot(dat_plots)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
