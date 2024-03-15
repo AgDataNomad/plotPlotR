@@ -94,11 +94,15 @@
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_input_dat.html">read_input_dat</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">4326</span>, <span class="fl">28355</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dat_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fl">80</span>, <span class="fl">24.2</span>, <span class="fl">11</span>, <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dat_plots_RR</span> <span class="op">&lt;-</span> <span class="fu"><a href="addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">dat_plots</span>, <span class="st">"BL"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in mutate(., range = rep(1:n_ranges, each = n_runs)):</span> <span style="color: #00BBBB;">i</span> In argument: `range = rep(1:n_ranges, each = n_runs)`.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> argument "n_ranges" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">moved_plots</span> <span class="op">&lt;-</span> <span class="fu">movePlotRuns</span><span class="op">(</span><span class="va">dat_plots_RR</span>, <span class="st">"up"</span>, <span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'dat_plots_RR' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">moved_plots</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="movePlotRuns-1.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'moved_plots' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
