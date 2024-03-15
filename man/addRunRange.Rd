@@ -27,5 +27,7 @@ a <- corners_to_plots(sf_object = cornersData,
 
 a_w_RunRange <- addRunRange(a, "BL")
 
+plot(a_w_RunRange)
+
 
 }
