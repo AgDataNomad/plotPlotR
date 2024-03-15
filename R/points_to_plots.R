@@ -1,6 +1,6 @@
-#' Make plots from points
+#' Make plots from points i.e. plot centers or use to adjust length and the width of plots in an existing plot layout
 #'
-#' @param sf_obj A sf object with geometry type POLYGON referring to plot centers.
+#' @param sf_obj A sf object with geometry type POINTS referring to plot center or POLYGONS
 #' @param plot_length Length of individual plots
 #' @param plot_width Width of individual plots
 #'
@@ -8,7 +8,25 @@
 #' @export
 #'
 #' @examples
-points_to_plots <- function(sf_obj, plot_length, plot_width){
+#'
+#' #reading a corner points data
+#'
+#' dat <- read_input_dat(cornersData, 4326)
+#'
+#' #Making a default plot grid using exp length and width, and using number of plots
+#'
+#' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
+#'
+#' plot(dat_plots)
+#'
+#' #Adjusting the size of the individual plots
+#'
+#' adj_plots <- make_plots(dat_plots, 2.5, 1.2)
+#'
+#' plot(adj_plots)
+#'
+#'
+make_plots <- function(sf_obj, plot_length, plot_width){
 
   expand_box_by <- plot_width/2
 
