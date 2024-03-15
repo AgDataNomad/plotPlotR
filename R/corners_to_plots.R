@@ -22,7 +22,7 @@
 #'
 #' @examples
 #'
-#'dat <- read_input_dat(cornersData)
+#'dat <- read_input_dat(cornersData, 4326)
 #'
 #'plots_dat <- corners_to_plots(dat, 80, 24.2, 11, 24)
 #'
