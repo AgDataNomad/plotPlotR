@@ -77,8 +77,18 @@
 
     
     
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p><code># install.packages("devtools")</code></p>
+<p><code>devtools::install_github("AgDataNomad/plotPlotR")</code></p>
+</div>
+<div class="section level2">
+<h2 id="library">Library<a class="anchor" aria-label="anchor" href="#library"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AgDataNomad/plotPlotR" class="external-link">plotPlotR</a></span><span class="op">)</span></span></code></pre></div>
+</div>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -104,12 +114,14 @@ creation and manipulation.</p>
 <div class="section level2">
 <h2 id="good-to-know">Good to know<a class="anchor" aria-label="anchor" href="#good-to-know"></a>
 </h2>
+<p>It is strongly recommended that you use a CRS that are in meters.
+Function <code><a href="../reference/read_input_dat.html">read_input_dat()</a></code> is a way users read data for
+futher processing using this package. This function will help (enforce)
+users to assign and change CRS of the input data. You may choose to use
+<a href="https://epsg.io/" class="external-link">epsg.io</a> to find the appropriate CRS for
+your region. The examples in this package uses CRS <a href="https://epsg.io/28355" class="external-link">28355</a>, as we are based in
+Australia.</p>
 <ul>
-<li><p>It is strongly recommended that you use a CRS that are in meters.
-Use <code>wgs84_to_unitM</code> function to convert WGS84 CRS to a CRS
-that is in unit meter. You may choose to use <a href="https://epsg.io/" class="external-link">epsg.io</a> to find the appropriate CRS for your
-region. The examples in this package uses CRS <a href="https://epsg.io/28355" class="external-link">28355</a>, as we are based in
-Australia.</p></li>
 <li>
 <p>Be familiar with the terminology used in this package. People who
 are not familiar with field operations may find the terminology used for
@@ -167,7 +179,9 @@ and where needed provide what alias is being used in your
 experiment.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">cornersData</span>, <span class="co">#package includes cornersData </span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">4326</span>, <span class="fl">28355</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>, <span class="co">#package includes cornersData </span></span>
 <span>                 exp_length <span class="op">=</span> <span class="fl">80</span>, <span class="co">#number of ranges multiplied by plot length including gaps</span></span>
 <span>                 exp_width <span class="op">=</span> <span class="fl">24.2</span>, <span class="co">#number of runs multiplied by tractor wheel width</span></span>
 <span>                 n_runs <span class="op">=</span> <span class="fl">11</span>, <span class="co">#total number of runs</span></span>
@@ -175,20 +189,40 @@ experiment.</p>
 <span><span class="co">#&gt; Simple feature collection with 220 features and 0 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POLYGON</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 133.818511467753 ymin: -75.0405555674167 xmax: 163.555663406591 ymax: 6.10001571354551</span></span>
-<span><span class="co">#&gt; CRS:           NA</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 654928.368178035 ymin: 6184367.55371965 xmax: 654957.984456289 ymax: 6184448.66602828</span></span>
+<span><span class="co">#&gt; Projected CRS: GDA94 / MGA zone 55</span></span>
 <span><span class="co">#&gt; First 10 features:</span></span>
 <span><span class="co">#&gt;                          geometry</span></span>
-<span><span class="co">#&gt; 1  POLYGON ((139.6398766487705...</span></span>
-<span><span class="co">#&gt; 2  POLYGON ((141.8339855256348...</span></span>
-<span><span class="co">#&gt; 3  POLYGON ((144.0280944024990...</span></span>
-<span><span class="co">#&gt; 4  POLYGON ((146.2222032793633...</span></span>
-<span><span class="co">#&gt; 5  POLYGON ((148.4163121562276...</span></span>
-<span><span class="co">#&gt; 6  POLYGON ((150.6104210330919...</span></span>
-<span><span class="co">#&gt; 7  POLYGON ((152.8045299099561...</span></span>
-<span><span class="co">#&gt; 8  POLYGON ((154.9986387868204...</span></span>
-<span><span class="co">#&gt; 9  POLYGON ((157.1927476636847...</span></span>
-<span><span class="co">#&gt; 10 POLYGON ((159.3868565405489...</span></span></code></pre></div>
+<span><span class="co">#&gt; 1  POLYGON ((654934.0659687938...</span></span>
+<span><span class="co">#&gt; 2  POLYGON ((654936.2603254446...</span></span>
+<span><span class="co">#&gt; 3  POLYGON ((654938.4546820955...</span></span>
+<span><span class="co">#&gt; 4  POLYGON ((654940.6490387463...</span></span>
+<span><span class="co">#&gt; 5  POLYGON ((654942.8433953972...</span></span>
+<span><span class="co">#&gt; 6  POLYGON ((654945.0377520482...</span></span>
+<span><span class="co">#&gt; 7  POLYGON ((654947.2321086990...</span></span>
+<span><span class="co">#&gt; 8  POLYGON ((654949.4264653500...</span></span>
+<span><span class="co">#&gt; 9  POLYGON ((654951.6208220008...</span></span>
+<span><span class="co">#&gt; 10 POLYGON ((654953.8151786517...</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Read your spatial data using <code><a href="../reference/read_input_dat.html">read_input_dat()</a></code>
+function</li>
+<li>Use <code><a href="../reference/corners_to_plots.html">corners_to_plots()</a></code> or <code><a href="../reference/make_plots.html">make_plots()</a></code>
+functions which takes 4 corner coordinates or plots centers respectively
+to make plot boundaries</li>
+<li>Use <code>AddRunRange()</code> function to add Run and Range
+coordinates to your plot layout</li>
+<li>Use <code><a href="../reference/make_split_plots.html">make_split_plots()</a></code> to make split plots from regular
+plots</li>
+<li>Export plot layout as any shape file formats using
+<code><a href="../reference/write_output_obj.html">write_output_obj()</a></code> function</li>
+</ol>
+<p>Read help pages for specific information of different functions.
+Visit <a href="https://agdatanomad.github.io/plotPlotR/" class="external-link">plotPlotR</a>
+for more information, updates etc</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
