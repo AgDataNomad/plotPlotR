@@ -13,9 +13,9 @@ make_split_plots(sf_obj, split_dist, split_into, plot_length, plot_width)
 
 \item{split_into}{Integer input, number of new plots to generate from one plot, takes 1 or 2}
 
-\item{plot_length}{Numeric value. Length of plot in meters.}
+\item{plot_length}{Numeric input, Length of plot in meters.}
 
-\item{plot_width}{Numeric value. Width of plot in meters.}
+\item{plot_width}{Numeric input, Width of plot in meters.}
 }
 \value{
 A sf object with geometry POLYGON

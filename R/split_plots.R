@@ -7,8 +7,8 @@
 #' @param sf_obj A sf object from a shape file, shp or geojson
 #' @param split_dist Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.
 #' @param split_into Integer input, number of new plots to generate from one plot, takes 1 or 2
-#' @param plot_length Numeric value. Length of plot in meters.
-#' @param plot_width Numeric value. Width of plot in meters.
+#' @param plot_length Numeric input, Length of plot in meters.
+#' @param plot_width Numeric input, Width of plot in meters.
 #'
 #' @return A sf object with geometry POLYGON
 #' @export
