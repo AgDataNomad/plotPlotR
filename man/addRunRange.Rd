@@ -21,13 +21,15 @@ facing Northern end. Bottom is close to you, Top is away from you. Left on your 
 }
 \examples{
 
-a <- corners_to_plots(sf_object = cornersData,
+dat <- read_input_dat(cornersData, 4326)
+
+dat_plot <- corners_to_plots(sf_object = dat,
                       exp_length = 80, exp_width = 24.2,
                       n_runs = 11, n_ranges = 20)
 
-a_w_RunRange <- addRunRange(a, "BL")
+datplot_w_RR <- addRunRange(a, "BL")
 
-plot(a_w_RunRange)
+plot(datplot_w_RR)
 
 
 }
