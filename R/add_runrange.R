@@ -19,7 +19,7 @@
 #'                       exp_length = 80, exp_width = 24.2,
 #'                       n_runs = 11, n_ranges = 20)
 #'
-#' datplot_w_RR <- addRunRange(a, "BL")
+#' datplot_w_RR <- addRunRange(dat_plots, "BL")
 #'
 #' plot(datplot_w_RR)
 #'
