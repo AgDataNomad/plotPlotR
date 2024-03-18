@@ -14,6 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Installation
+
+`# install.packages("devtools")`
+
+`devtools::install_github("AgDataNomad/plotPlotR")`
+
+## Library
+
 ```{r setup}
 library(plotPlotR)
 ```
@@ -30,7 +38,7 @@ This package provide user friendly functions to deal with field plot creation an
 
 ## Good to know
 
--   It is strongly recommended that you use a CRS that are in meters. Use `wgs84_to_unitM` function to convert WGS84 CRS to a CRS that is in unit meter. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses CRS [28355](https://epsg.io/28355), as we are based in Australia.
+It is strongly recommended that you use a CRS that are in meters. Function `read_input_dat()` is a way users read data for futher processing using this package. This function will help (enforce) users to assign and change CRS of the input data. You may choose to use [epsg.io](https://epsg.io/) to find the appropriate CRS for your region. The examples in this package uses CRS [28355](https://epsg.io/28355), as we are based in Australia.
 
 -   Be familiar with the terminology used in this package. People who are not familiar with field operations may find the terminology used for arguments in functions new. Please refer to functions help menu or [reference](https://agdatanomad.github.io/plotPlotR/reference/index.html) for more information. Below examples contains some terminology you may not be familiar with but are used extensively in this package.
 
@@ -53,10 +61,22 @@ Run and Range may not the terminology you use. Rows, Runs, Row, Run, rowNo, runN
 
 ```{r Experiment layout example}
 
-corners_to_plots(sf_object = cornersData, #package includes cornersData 
+dat <- read_input_dat(cornersData, 4326, 28355)
+
+corners_to_plots(sf_object = dat, #package includes cornersData 
                  exp_length = 80, #number of ranges multiplied by plot length including gaps
                  exp_width = 24.2, #number of runs multiplied by tractor wheel width
                  n_runs = 11, #total number of runs
                  n_ranges = 20) #total number of ranges
 
 ```
+
+## Getting started
+
+1. Read your spatial data using `read_input_dat()` function
+2. Use `corners_to_plots()` or `make_plots()` functions which takes 4 corner coordinates or plots centers respectively to make plot boundaries
+3. Use `AddRunRange()` function to add Run and Range coordinates to your plot layout
+4. Use `make_split_plots()` to make split plots from regular plots
+5. Export plot layout as any shape file formats using `write_output_obj()` function
+
+Read help pages for specific information of different functions. Visit [plotPlotR](https://agdatanomad.github.io/plotPlotR/) for more information, updates etc
