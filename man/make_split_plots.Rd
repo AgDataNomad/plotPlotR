@@ -4,7 +4,7 @@
 \alias{make_split_plots}
 \title{Create split plot centers}
 \usage{
-make_split_plots(sf_obj, split_dist, split_into)
+make_split_plots(sf_obj, split_dist, split_into, plot_length, plot_width)
 }
 \arguments{
 \item{sf_obj}{A sf object from a shape file, shp or geojson}
@@ -12,9 +12,13 @@ make_split_plots(sf_obj, split_dist, split_into)
 \item{split_dist}{Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.}
 
 \item{split_into}{Integer input, number of new plots to generate from one plot, takes 1 or 2}
+
+\item{plot_length}{Numeric value. Length of plot in meters.}
+
+\item{plot_width}{Numeric value. Width of plot in meters.}
 }
 \value{
-A sf object with geometry POINT
+A sf object with geometry POLYGON
 }
 \description{
 Splitting a single regular plot into two or three plots.
@@ -28,7 +32,7 @@ dat <- read_input_dat(cornersData, 4326, 28355)
 
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 22)
 
-dat_split_plots <- make_split_plots(dat_plots)
+dat_split_plots <- make_split_plots(dat_plots, plot_length = 3, plot_width = 0.75)
 
 plot(dat_split_plots)
 
