@@ -9,7 +9,7 @@ rot_plots(sf_object, rotation_angle)
 \arguments{
 \item{sf_object}{A MULTIPOLYGON sf object, representing plots on a field experiment.}
 
-\item{rotation_angle}{Rotation angle in radians. Use function rot_angle() to find rotation angle or pass radians as numeric input.}
+\item{rotation_angle}{A numerical value. Rotation angle in degrees. Positive or negative values accepted.}
 }
 \value{
 Returns a rotated sf object
