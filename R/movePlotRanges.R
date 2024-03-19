@@ -105,5 +105,7 @@ movePlotRanges <- function(sf_obj, moveDirection, moveDistance, rangeSelection){
 
   st_geometry(new_sf) <- "geometry"
 
+  st_crs(new_sf) <- st_crs(sf_obj)
+
   return(new_sf)
 }
