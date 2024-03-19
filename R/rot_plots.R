@@ -20,6 +20,12 @@ rot_plots <- function(sf_object, rotation_angle){
 
   st_crs(rot_plots) <- st_crs(sf_object)
 
+  rot_plots <- st_as_sf(rot_plots)
+
+  rot_plots <- bind_cols(rot_plots, st_drop_geometry(sf_object))
+
+  st_geometry(rot_plots) <- "geometry"
+
   return(rot_plots)
 
 }
