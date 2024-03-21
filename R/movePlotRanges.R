@@ -22,7 +22,7 @@
 #'
 #' dat <- read_input_dat(cornersData, 4326, 28355)
 #' dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
-#' dat_plots_RR <- addRunRange(dat_plots, "BL")
+#' dat_plots_RR <- addRunRange(dat_plots, "BL", 11, 20)
 #'
 #'
 #' moved_plots <- movePlotRanges(dat_plots_RR, "right", 1.2, c(1,3,9))
