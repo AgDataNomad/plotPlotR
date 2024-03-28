@@ -7,7 +7,7 @@
 expand_points(sf_obj, expand_by)
 }
 \arguments{
-\item{sf_obj}{A sf object of geometry type POINT}
+\item{sf_obj}{A sf object of geometry type POINT. CRS needs to be in unit meters}
 
 \item{expand_by}{A numeric value. Distance to expand the area in meters}
 }

@@ -2,7 +2,7 @@
 #'
 #' For the purposes of creating flight plan when you know the corners of your experiment
 #'
-#' @param sf_obj A sf object of geometry type POINT
+#' @param sf_obj A sf object of geometry type POINT. CRS needs to be in unit meters
 #' @param expand_by  A numeric value. Distance to expand the area in meters
 #'
 #' @return A sf object of geometry type POINT. CRS will be 4326
@@ -35,7 +35,11 @@ expand_points <- function(sf_obj, expand_by)  {
         select(X,Y)
 
       return(dat)
-    }
+  }
+
+  if(st_is_longlat(sf_obj)==TRUE){
+    stop("sf object doesn't have unit m CRS")
+  }
 
   a <- st_crs(sf_obj)$input
 
