@@ -27,6 +27,6 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
-URL: https://github.com/AgDataNomad/plotPlotR
+URL: https://github.com/AgDataNomad/plotPlotR, https://agdatanomad.github.io/plotPlotR/
 BugReports: https://github.com/AgDataNomad/plotPlotR/issues
 Config/testthat/edition: 3
