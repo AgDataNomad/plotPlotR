@@ -2,18 +2,20 @@
 % Please edit documentation in R/rot_plots.R
 \name{rot_plots}
 \alias{rot_plots}
-\title{Rotate individual plots on its center}
+\title{Rotate entire experiment or individual plots on its center}
 \usage{
-rot_plots(sf_object, rotation_angle)
+rot_plots(sf_object, rotation_angle, selection)
 }
 \arguments{
-\item{sf_object}{A MULTIPOLYGON sf object, representing plots on a field experiment.}
+\item{sf_object}{A MULTIPOLYGON sf object, representing plot layouts on a field experiment.}
 
 \item{rotation_angle}{A numerical value. Rotation angle in degrees. Positive or negative values accepted.}
+
+\item{selection}{A character string of value "plots" or "experiment". "Plots" rotates individual plots on its center, "exp" rotates the entire experiment.}
 }
 \value{
 Returns a rotated sf object
 }
 \description{
-Rotate individual plots on its center
+Rotate entire experiment or individual plots on its center
 }

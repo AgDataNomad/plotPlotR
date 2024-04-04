@@ -1,22 +1,31 @@
-#' Rotate individual plots on its center
+#' Rotate entire experiment or individual plots on its center
 #'
-#' @param sf_object A MULTIPOLYGON sf object, representing plots on a field experiment.
+#' @param sf_object A MULTIPOLYGON sf object, representing plot layouts on a field experiment.
 #' @param rotation_angle A numerical value. Rotation angle in degrees. Positive or negative values accepted.
+#' @param selection A character string of value "plots" or "experiment". "Plots" rotates individual plots on its center, "exp" rotates the entire experiment.
 #' @return Returns a rotated sf object
 #' @export
 #'
 #' @examples
-rot_plots <- function(sf_object, rotation_angle){
+rot_plots <- function(sf_object, rotation_angle, selection){
 
   rotation_angle <- deg_2_rad(rotation_angle)
 
   a <- rot_shape(rotation_angle)
 
-  centrd <- sf_object %>%
-    st_geometry() %>%
-    st_centroid()
+  if (selection == "plots") {
 
-  rot_plots <- (st_geometry(sf_object)-centrd)*a+centrd
+    centrd <- sf_object %>%
+      st_geometry() %>%
+      st_centroid()
+
+    rot_plots <- (st_geometry(sf_object)-centrd)*a+centrd
+  } else if (selection == "experiment") {
+
+    centrd <- st_centroid(st_union(st_centroid(st_geometry(sf_object))))
+
+    rot_plots <- (st_geometry(sf_object)-centrd)*a+centrd
+  }
 
   st_crs(rot_plots) <- st_crs(sf_object)
 
