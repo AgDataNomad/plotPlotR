@@ -1,6 +1,6 @@
 #' Move runs in your field experiment horizontally or vertically
 #'
-#' Users can select a susbset of runs or all runs
+#' Users can select a subset of runs or all runs
 #'
 #' Move distance is in unit meters
 #'
@@ -11,7 +11,7 @@
 #' @param sf_obj A sf object of geometry POLYGON or MULTIPOLYGON with Run and Range columns
 #' @param moveDirection Direction of the move in reference to Run 1 Range 1. Takes "up", "down", "left" or "right" as inputs.
 #' @param moveDistance Numeric value in meters to move
-#' @param runSelection Numeric value or numeric vector of a subset of runs or all runs
+#' @param runSelection Integer value or a vector of a subset of runs or all runs. Default is all ranges.
 #'
 #' @return A sf object with modified Run(s)
 #' @export
@@ -26,7 +26,13 @@
 #'
 #' plot(moved_plots)
 #'
-movePlotRuns <- function(sf_obj, moveDirection, moveDistance, runSelection){
+movePlotRuns <- function(sf_obj, moveDirection, moveDistance, runSelection=NULL){
+
+  if (is.null(runSelection)){
+    runSelection <- 1:max(sf_obj$Run)
+  } else {
+    runSelection
+  }
 
   if (moveDirection %in% c("left", "right")){
     x_offset <- abs(cos(rot_angle(sf_obj)))

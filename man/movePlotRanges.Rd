@@ -4,7 +4,7 @@
 \alias{movePlotRanges}
 \title{Move ranges in your field experiment horizontally or vertically}
 \usage{
-movePlotRanges(sf_obj, moveDirection, moveDistance, rangeSelection)
+movePlotRanges(sf_obj, moveDirection, moveDistance, rangeSelection = NULL)
 }
 \arguments{
 \item{sf_obj}{A sf object of geometry POLYGON or MULTIPOLYGON with Run and Range columns}
@@ -13,7 +13,7 @@ movePlotRanges(sf_obj, moveDirection, moveDistance, rangeSelection)
 
 \item{moveDistance}{Numeric value in meters to move}
 
-\item{rangeSelection}{Numeric value or numeric vector of a subset of ranges or all ranges}
+\item{rangeSelection}{Integer value or vector of a subset of ranges or all ranges. Default is all ranges.}
 }
 \value{
 a sf object of geometry POLYGON with Run and Range columns

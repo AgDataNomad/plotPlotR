@@ -13,7 +13,7 @@
 #' @param sf_obj A sf object of geometry POLYGON or MULTIPOLYGON with Run and Range columns
 #' @param moveDirection Direction of the move in reference Run 1 Range 1. Takes "up", "down", "left" or "right" as inputs.
 #' @param moveDistance Numeric value in meters to move
-#' @param rangeSelection Numeric value or numeric vector of a subset of ranges or all ranges
+#' @param rangeSelection Integer value or vector of a subset of ranges or all ranges. Default is all ranges.
 #'
 #' @return a sf object of geometry POLYGON with Run and Range columns
 #' @export
@@ -30,7 +30,13 @@
 #' plot(moved_plots)
 #'
 #'
-movePlotRanges <- function(sf_obj, moveDirection, moveDistance, rangeSelection){
+movePlotRanges <- function(sf_obj, moveDirection, moveDistance, rangeSelection=NULL){
+
+  if (is.null(rangeSelection)){
+    rangeSelection <- 1:max(sf_obj$Range)
+  } else {
+    rangeSelection
+  }
 
   if (moveDirection %in% c("left", "right")){
     x_offset <- abs(cos(rot_angle(sf_obj)))

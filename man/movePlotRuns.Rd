@@ -4,7 +4,7 @@
 \alias{movePlotRuns}
 \title{Move runs in your field experiment horizontally or vertically}
 \usage{
-movePlotRuns(sf_obj, moveDirection, moveDistance, runSelection)
+movePlotRuns(sf_obj, moveDirection, moveDistance, runSelection = NULL)
 }
 \arguments{
 \item{sf_obj}{A sf object of geometry POLYGON or MULTIPOLYGON with Run and Range columns}
@@ -13,13 +13,13 @@ movePlotRuns(sf_obj, moveDirection, moveDistance, runSelection)
 
 \item{moveDistance}{Numeric value in meters to move}
 
-\item{runSelection}{Numeric value or numeric vector of a subset of runs or all runs}
+\item{runSelection}{Integer value or a vector of a subset of runs or all runs. Default is all ranges.}
 }
 \value{
 A sf object with modified Run(s)
 }
 \description{
-Users can select a susbset of runs or all runs
+Users can select a subset of runs or all runs
 }
 \details{
 Move distance is in unit meters
