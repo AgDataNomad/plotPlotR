@@ -1,8 +1,8 @@
 #' Add Run and Range values to a field experiment plots
 #'
 #' After generating plot boundaries, this functions allows users to assign Run and Range values. To identify what (where) is run1_range1 value,
-#' assume you are standing on the **Southern end** of your **experiment width** side i.e. `exp_width` input in `corners_to_plot` function,
-#' facing Northern end. Bottom is close to you, Top is away from you. Left on your left side and Right on your right side.
+#' assume you are standing on the Southern end of your experiment RUNS,
+#' facing North. Bottom is close to you, Top is away from you. Left on your left side and Right on your right side.
 #'
 #' @param sf_object A sf object of geometry type POLYGON or MULTIPOLYGON
 #' @param run1_range1 Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.
