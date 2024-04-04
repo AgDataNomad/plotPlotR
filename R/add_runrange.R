@@ -6,8 +6,8 @@
 #'
 #' @param sf_object A sf object of geometry type POLYGON or MULTIPOLYGON
 #' @param run1_range1 Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.
-#' @param n_runs Numeric value. Number of runs in the experiment
-#' @param n_ranges Numeric value. Number of ranges in the experiment
+#' @param n_runs Integer value. Number of runs in the experiment
+#' @param n_ranges Integer value. Number of ranges in the experiment
 #'
 #' @return A sf object with Run and Range columns added.
 #' @export

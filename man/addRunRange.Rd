@@ -11,9 +11,9 @@ addRunRange(sf_object, run1_range1, n_runs, n_ranges)
 
 \item{run1_range1}{Position of Run 1 and Range 1. Will take 4 different options. "TR","TL","BR","BL" denoting top right, top left, bottom right, bottom left respectively.}
 
-\item{n_runs}{Numeric value. Number of runs in the experiment}
+\item{n_runs}{Integer value. Number of runs in the experiment}
 
-\item{n_ranges}{Numeric value. Number of ranges in the experiment}
+\item{n_ranges}{Integer value. Number of ranges in the experiment}
 }
 \value{
 A sf object with Run and Range columns added.
