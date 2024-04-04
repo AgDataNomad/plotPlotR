@@ -48,7 +48,7 @@ This is a basic example which shows you how to create plot boundaries:
 library(plotPlotR)
 ## A simple function to create plot layout with corner points from a csv file
 
-cornersData # a data frame with 4 XY points referring to the four corners of an experiment
+cornersData # dataframe with 4 XY points corresponding to four corners of an experiment
 #>          X         Y id
 #> 1 148.6870 -34.47064  1
 #> 2 148.6873 -34.47062  4
@@ -59,7 +59,7 @@ dat <- read_input_dat(cornersData, 4326, 28355) # Reading data and converting to
 
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
 
-dat_plots <- addRunRange(dat_plots, "BL")
+dat_plots <- addRunRange(dat_plots, "BL", n_runs = 11, n_ranges = 20)
 
 plot(dat_plots)
 ```
