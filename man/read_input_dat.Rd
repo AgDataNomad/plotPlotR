@@ -4,14 +4,16 @@
 \alias{read_input_dat}
 \title{Read input data}
 \usage{
-read_input_dat(input_dat, input_CRS, to_CRS_M)
+read_input_dat(input_dat, input_CRS, to_CRS_M, XY = NULL)
 }
 \arguments{
 \item{input_dat}{CSV file containing XY or any shape file formats.}
 
-\item{input_CRS}{Numeric input. CRS of input data as EPSG code}
+\item{input_CRS}{Integer input. CRS of input data as EPSG code}
 
-\item{to_CRS_M}{NUmeric input. Corresponding CRS in unit M to input CRS as EPSG code}
+\item{to_CRS_M}{Integer input. Corresponding CRS in unit M to input CRS as EPSG code}
+
+\item{XY}{a vector identifying colnames of X and Y e.g. c("Easting", "Northing")}
 }
 \value{
 A sf object with CRS
