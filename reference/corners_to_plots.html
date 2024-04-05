@@ -14,7 +14,7 @@ and produces a sf object with geometry type MULTIPOLYGON."><!-- mathjax --><scri
     
     <a class="navbar-brand me-2" href="../index.html">plotPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,15 @@ and produces a sf object with geometry type MULTIPOLYGON.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">corners_to_plots</span><span class="op">(</span><span class="va">sf_object</span>, <span class="va">exp_length</span>, <span class="va">exp_width</span>, <span class="va">n_runs</span>, <span class="va">n_ranges</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">corners_to_plots</span><span class="op">(</span></span>
+<span>  <span class="va">sf_object</span>,</span>
+<span>  <span class="va">exp_length</span>,</span>
+<span>  <span class="va">exp_width</span>,</span>
+<span>  <span class="va">n_runs</span>,</span>
+<span>  <span class="va">n_ranges</span>,</span>
+<span>  plot_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  plot_width <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -84,6 +92,14 @@ and produces a sf object with geometry type MULTIPOLYGON.</p>
 <dt>n_ranges</dt>
 <dd><p>Number of ranges in the experiment, typically along the longer side of the experiment.</p></dd>
 
+
+<dt>plot_length</dt>
+<dd><p>OPTIONAL. Numeric value. Length of a plot in meters</p></dd>
+
+
+<dt>plot_width</dt>
+<dd><p>OPTIONAL. Numeric value. Width of a plot in meters</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -93,9 +109,9 @@ and produces a sf object with geometry type MULTIPOLYGON.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Plot dimensions are set to 90<!-- % of the max plot size without any plot gaps. Suits most use cases. --></p>
-<p>For custom plot size, use `make_plots()` function to adjust plot size and plot width</p>
-<p>Use `read_input_dat()` to bring you corners data</p>
+    <p>Default plot dimensions are set to 90<!-- % of the max plot size without any plot gaps. Suits most use cases. --></p>
+<p>For custom plot size, use optional plot size and plot width arguments</p>
+<p>Use `read_input_dat()` to bring in your corners data</p>
     </div>
 
     <div class="section level2">
