@@ -4,7 +4,15 @@
 \alias{corners_to_plots}
 \title{Generating plots from four corner points}
 \usage{
-corners_to_plots(sf_object, exp_length, exp_width, n_runs, n_ranges)
+corners_to_plots(
+  sf_object,
+  exp_length,
+  exp_width,
+  n_runs,
+  n_ranges,
+  plot_length = NULL,
+  plot_width = NULL
+)
 }
 \arguments{
 \item{sf_object}{A sf object with geometry of 4 POINTS or a data frame with four rows of X,Y (Longitude and Latitude)}
@@ -16,6 +24,10 @@ corners_to_plots(sf_object, exp_length, exp_width, n_runs, n_ranges)
 \item{n_runs}{Number of runs in the experiment, typically along the shorter side of the experiment.}
 
 \item{n_ranges}{Number of ranges in the experiment, typically along the longer side of the experiment.}
+
+\item{plot_length}{OPTIONAL. Numeric value. Length of a plot in meters}
+
+\item{plot_width}{OPTIONAL. Numeric value. Width of a plot in meters}
 }
 \value{
 A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.
@@ -26,11 +38,11 @@ find its center and rotation angle, make new plots based on other parameters
 and produces a sf object with geometry type MULTIPOLYGON.
 }
 \details{
-Plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
+Default plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
 
-For custom plot size, use `make_plots()` function to adjust plot size and plot width
+For custom plot size, use optional plot size and plot width arguments
 
-Use `read_input_dat()` to bring you corners data
+Use `read_input_dat()` to bring in your corners data
 }
 \examples{
 

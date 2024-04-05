@@ -4,11 +4,11 @@
 #' find its center and rotation angle, make new plots based on other parameters
 #' and produces a sf object with geometry type MULTIPOLYGON.
 #'
-#' Plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
+#' Default plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
 #'
-#' For custom plot size, use `make_plots()` function to adjust plot size and plot width
+#' For custom plot size, use optional plot size and plot width arguments
 #'
-#' Use `read_input_dat()` to bring you corners data
+#' Use `read_input_dat()` to bring in your corners data
 #'
 #'
 #' @param sf_object A sf object with geometry of 4 POINTS or a data frame with four rows of X,Y (Longitude and Latitude)
@@ -16,6 +16,8 @@
 #' @param exp_width Total width of the experiment in unit meter
 #' @param n_runs Number of runs in the experiment, typically along the shorter side of the experiment.
 #' @param n_ranges Number of ranges in the experiment, typically along the longer side of the experiment.
+#' @param plot_length OPTIONAL. Numeric value. Length of a plot in meters
+#' @param plot_width OPTIONAL. Numeric value. Width of a plot in meters
 #'
 #' @return A sf object of geometry MULTIPOLYGON with n_runs X n_ranges features.
 #' @export
@@ -28,13 +30,8 @@
 #'
 #'plot(plots_dat)
 #'
-corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges){
-
-  a_ls <- ls()
-  a_c <- names(as.list(match.call()))[-1]
-  if (any(!a_ls %in% a_c)) {
-    stop(paste("missing values for", paste(setdiff(a_ls, a_c), collapse=", ")))
-  }
+corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges,
+                             plot_length = NULL, plot_width = NULL){
 
   if("sf" %in% class(sf_object)){
     sf_object
@@ -91,6 +88,12 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges)
     plot_centers
   } else {
     st_crs(plot_centers) <- st_crs(sf_object)
+  }
+
+  if (!(is.null(plot_length) & is.null(plot_width))){
+    plot_centers <- make_plots(plot_centers, plot_length = plot_length, plot_width = plot_width)
+  } else {
+    plot_centers
   }
 
   return(plot_centers)
