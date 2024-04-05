@@ -1,5 +1,13 @@
 # plotPlotR (development version)
 
+-   movePlotRuns and movePlotRanges will move all runs or ranges if there is no selection
+
+-   read_input_dat has \`XY\` arg to identify coords, if it is not the first and second columns in input data
+
+-   corners_to_plots has optional plot_length and plot_width
+
+-   other minor updates
+
 # plotPlotR 0.3.0
 
 -   Added read and write functions for a complete package experience
