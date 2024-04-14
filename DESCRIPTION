@@ -1,7 +1,7 @@
 Package: plotPlotR
 Type: Package
 Title: Field experiment plot creation, segmentation and manipulation
-Version: 0.3.0.9001
+Version: 0.3.1
 Authors@R: c(
         person("Aswin", "Singaram Natarajan", , "sin17m@csiro.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8981-6353")),
@@ -15,7 +15,8 @@ Description: This package provides users with a set of tools to easily create an
 Imports:
     dplyr (>= 1.1.4),
     magrittr (>= 2.0.3),
-    sf (>= 1.0-15)
+    sf (>= 1.0-16),
+    terra (>= 1.7-71)
 Depends:
     R (>= 2.10)
 License: AGPL (>= 3)

@@ -1,4 +1,4 @@
-# plotPlotR (development version)
+# plotPlotR 0.3.1
 
 -   movePlotRuns and movePlotRanges will move all runs or ranges if there is no selection
 
