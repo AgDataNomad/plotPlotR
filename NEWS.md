@@ -1,5 +1,9 @@
 # plotPlotR 0.3.1
 
+-   Find corners from within your R environment using `collect_corners()` function
+
+-   Move your experiment to a new center using `moveAllPlots()` function
+
 -   movePlotRuns and movePlotRanges will move all runs or ranges if there is no selection
 
 -   read_input_dat has \`XY\` arg to identify coords, if it is not the first and second columns in input data
