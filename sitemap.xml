@@ -4,6 +4,9 @@
     <loc>https://agdatanomad.github.io/plotPlotR/404.html</loc>
   </url>
   <url>
+    <loc>https://agdatanomad.github.io/plotPlotR/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>https://agdatanomad.github.io/plotPlotR/articles/index.html</loc>
   </url>
   <url>
@@ -16,13 +19,16 @@
     <loc>https://agdatanomad.github.io/plotPlotR/index.html</loc>
   </url>
   <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>https://agdatanomad.github.io/plotPlotR/news/index.html</loc>
   </url>
   <url>
+    <loc>https://agdatanomad.github.io/plotPlotR/readme.html</loc>
+  </url>
+  <url>
     <loc>https://agdatanomad.github.io/plotPlotR/reference/addRunRange.html</loc>
+  </url>
+  <url>
+    <loc>https://agdatanomad.github.io/plotPlotR/reference/collect_corners.html</loc>
   </url>
   <url>
     <loc>https://agdatanomad.github.io/plotPlotR/reference/cornersData.html</loc>
@@ -44,6 +50,9 @@
   </url>
   <url>
     <loc>https://agdatanomad.github.io/plotPlotR/reference/make_split_plots.html</loc>
+  </url>
+  <url>
+    <loc>https://agdatanomad.github.io/plotPlotR/reference/moveAllPlots.html</loc>
   </url>
   <url>
     <loc>https://agdatanomad.github.io/plotPlotR/reference/movePlotRanges.html</loc>
