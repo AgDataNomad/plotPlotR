@@ -19,22 +19,22 @@ rot_plots <- function(sf_object, rotation_angle, selection){
       st_geometry() %>%
       st_centroid()
 
-    rot_plots <- (st_geometry(sf_object)-centrd)*a+centrd
+    rot_obj <- (st_geometry(sf_object)-centrd)*a+centrd
   } else if (selection == "experiment") {
 
     centrd <- st_centroid(st_union(st_centroid(st_geometry(sf_object))))
 
-    rot_plots <- (st_geometry(sf_object)-centrd)*a+centrd
+    rot_obj <- (st_geometry(sf_object)-centrd)*a+centrd
   }
 
-  st_crs(rot_plots) <- st_crs(sf_object)
+  st_crs(rot_obj) <- st_crs(sf_object)
 
-  rot_plots <- st_as_sf(rot_plots)
+  rot_obj <- st_as_sf(rot_obj)
 
-  rot_plots <- bind_cols(rot_plots, st_drop_geometry(sf_object))
+  rot_obj <- bind_cols(rot_obj, st_drop_geometry(sf_object))
 
-  st_geometry(rot_plots) <- "geometry"
+  st_geometry(rot_obj) <- "geometry"
 
-  return(rot_plots)
+  return(rot_obj)
 
 }
