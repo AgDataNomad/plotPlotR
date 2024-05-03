@@ -11,7 +11,7 @@ rot_plots(sf_object, rotation_angle, selection)
 
 \item{rotation_angle}{A numerical value. Rotation angle in degrees. Positive or negative values accepted.}
 
-\item{selection}{A character string of value "plots" or "experiment". "Plots" rotates individual plots on its center, "exp" rotates the entire experiment.}
+\item{selection}{A character string of value "plots" or "experiment". "Plots" rotates individual plots on its center, "experiment" rotates the entire experiment.}
 }
 \value{
 Returns a rotated sf object

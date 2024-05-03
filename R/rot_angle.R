@@ -33,8 +33,8 @@ rot_angle <- function(sf_object){
     filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y))) %>%
     distinct(X,Y)
 
-  x_dist <- max(corners_poly$X)-min(corners_poly$X)
-  y_dist <- max(corners_poly$Y)-min(corners_poly$Y)
+  # x_dist <- max(corners_poly$X)-min(corners_poly$X)
+  # y_dist <- max(corners_poly$Y)-min(corners_poly$Y)
 
   # if (x_dist<y_dist) {
   #   corners_poly <- corners_poly %>%
@@ -52,8 +52,6 @@ rot_angle <- function(sf_object){
   rotation_angle <- 360-((atan(x))*(180/pi))
 
   rotation_angle <- pi*(rotation_angle/180)
-
-  rm(list = ls()[ls()!="rotation_angle"])
 
   if(rotation_angle>(360*(pi/180))){
     rotation_angle <- rotation_angle-(360*(pi/180))
