@@ -7,10 +7,10 @@
 \format{
 A data frame with 4 rows and 3 columns:
 \describe{
-  \item{X}{Longitude}
-  \item{Y}{Latitude}
-  \item{id}{id}
-  ...
+\item{X}{Longitude}
+\item{Y}{Latitude}
+\item{id}{id}
+...
 }
 }
 \usage{

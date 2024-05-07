@@ -38,7 +38,7 @@ devtools::install_github("AgDataNomad/plotPlotR")
 
 ## Example
 
-This is a basic example which shows you how to create plot boundaries:
+This is a simple example showing how to create plot layout using 4 corner points:
 
 ```{r example}
 library(plotPlotR)
@@ -55,102 +55,3 @@ dat_plots <- addRunRange(dat_plots, "BL", n_runs = 11, n_ranges = 20)
 plot(dat_plots)
 
 ```
-
-## Getting started
-
-### Reading data
-
-The function `read_input_dat()` is used to bring your coordinates data into the plotPlotR environment. `read_input_dat` allows users to input a csv file path or a dataframe loaded in the `R` environment or any common shape file formats.
-
-*plotPlotR* requires all shapefiles to have a Coordinate Reference System (CRS) and more importantly it requires coordinates in unit meters to compute different functions. Coordinate Reference System is a coordinates based system to locate geographical entities and is the core principles of GIS workflows. Most common CRS is WGS84 or EPSG 4326, which uses longitudes and latitudes to locate geographical entities. This CRS is what gets used in applications such as navigation systems, google maps, drone navigation etc. Orthomosaics generated using a stitching software often has CRS 4326.
-
-When reading data from a CSV file or from a dataframe, users need to supply the X and Y values using `XY` argument and the CRS using the `input_CRS` arg. `input_CRS` argument takes any default CRS formats, just entering the EPSG code as a number works, for example `input_CRS = 4326`. `XY` argument is not required if and when the csv file or the dataframe has XY as the first two columns.
-
-Here is an example of reading data using the **cornersData** dataset included in the package. `read_input_dat` function is used without declaring `to_CRS_M` argument. NOTE: When `to_CRS_M` is not supplied, plotPlotR automatically assigns a **WGS 84 / Pseudo-Mercator** CRS.
-
-```{r reading_dat}
-
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326)
-
-dat
-
-```
-
-Here is an example of reading data with a `to_CRS_M` agrument.
-
-```{r}
-
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326,
-                      to_CRS_M = 28355)
-
-dat
-
-```
-
-An example of reading data from a dataframe
-
-```{r}
-
-dat <- cornersData
-
-class(dat) ##dataframe
-
-df_dat <- read_input_dat(input_dat = dat, input_CRS = 4326)
-
-```
-
-Here is an example of reading input data when the dataframe or the CSV file doesn't contain X and Y as the first two columns. `read_input_dat` function will convert the XY columns to *geometry* and preserves all other columns.
-
-```{r}
-
-dat <- cornersData
-
-#rearranging and renaming columns and adding a new column to demonstrate read_input_dat function
-
-dat <- dat[,c(3,1,2)]
-
-colnames(dat) <- c("A","B","C")
-
-dat$comment <- "some_gps_data"
-
-df_dat <- read_input_dat(input_dat = dat,
-                         input_CRS = 4326,
-                         XY = c("B", "C"), # columns names of X and Y coordinates
-                         to_CRS_M = 28355)
-
-df_dat
-
-
-```
-
-### Writing data
-
-Writing outputs of **plotPlotR** is done through calling `write_output_obj()` function. This function takes two arguments; `output_dat` and `file_name`. File name is the file path with the desired extention type. For example *geoJSON*, *kml* etc. 
-
-```{r}
-
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326)
-
-#write_output_obj(dat, "path_to_folder/file_name.geoJSON")
-
-```
-
-
-## Creating plot layout
-
-Creating plot layout is the core function of the **plotPlotR** package. Creating plots can be done in one of two ways depending on what information is available.
-
-1. From 4 coordinates or sets of 4 coordinates, center of which is the center of the experiment. `corners_to_plots` function is used to generate plot layouts from the corner points. The corner points can be generated using different ways, if you have a raster you can use `collect_corners` function to collect corners. Users can use google earth, QGIS, Ground Control Points data to get 4 corner points. 
-2. From trip points generated from tractors/seeders etc using the `make_plots` function. Modern tractors uses GPS or similar systems to drive on a paddock to sow seeds etc. These trip points, one for each plot can be used to create a field layout.  
-
-### Corners to plots
-
-Creating 
-
-
-
-
-

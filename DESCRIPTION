@@ -31,3 +31,4 @@ VignetteBuilder: knitr
 URL: https://github.com/AgDataNomad/plotPlotR, https://agdatanomad.github.io/plotPlotR/
 BugReports: https://github.com/AgDataNomad/plotPlotR/issues
 Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)

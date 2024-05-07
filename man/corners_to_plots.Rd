@@ -41,11 +41,11 @@ find its center and rotation angle, make new plots based on other parameters
 and produces a sf object with geometry type MULTIPOLYGON.
 }
 \details{
-Default plot dimensions are set to 90% of the max plot size without any plot gaps. Suits most use cases.
+Default plot dimensions are set to 90\% of the max plot size without any plot gaps. Suits most use cases.
 
 For custom plot size, use optional plot size and plot width arguments
 
-Use `read_input_dat()` to bring in your corners data
+Use \code{read_input_dat()} to bring in your corners data
 }
 \examples{
 
