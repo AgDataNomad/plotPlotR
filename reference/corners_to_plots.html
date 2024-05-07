@@ -66,6 +66,7 @@ and produces a sf object with geometry type MULTIPOLYGON.</p>
 <span>  <span class="va">exp_width</span>,</span>
 <span>  <span class="va">n_runs</span>,</span>
 <span>  <span class="va">n_ranges</span>,</span>
+<span>  exp_orientation <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  plot_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  plot_width <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -91,6 +92,10 @@ and produces a sf object with geometry type MULTIPOLYGON.</p>
 
 <dt>n_ranges</dt>
 <dd><p>Number of ranges in the experiment, typically along the longer side of the experiment.</p></dd>
+
+
+<dt>exp_orientation</dt>
+<dd><p>OPTIONAL. Orientation of runs in the experiment. Takes "NS" or "EW", Default is "NS". NS is North-South; EW is East-West</p></dd>
 
 
 <dt>plot_length</dt>
