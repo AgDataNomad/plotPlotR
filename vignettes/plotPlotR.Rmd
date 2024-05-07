@@ -53,11 +53,11 @@ It is strongly recommended that you use a CRS that are in meters. Function `read
 
 An experiment layout for the purposes of this package is a rectangular grid layout, where each smaller rectangles are plots. The plots can be represented by its position on two axis, `Run` and `Range`. Plots along the direction of the tractor travel are called `Run` and plots on the other axis are called `Range`.
 
-The experiments themselves has experiment length `exp_length` which is akin to the length of a `Run` and experiment width `exp_width` referring to the length of a `Range`. `exp_length` is measure plot length with gap multiplied by the number of ranges and `exp_width` is tractor wheel width multiplied by the number of runs. Each run maximum number of ranges and vice versa.
+The experiments themselves has experiment length `exp_length` which is akin to the length of a `Run` and experiment width `exp_width` referring to the length of a `Range`. `exp_length` is measure plot length with gap multiplied by the number of ranges and `exp_width` is tractor wheel width multiplied by the number of runs. Each run has the maximum number of ranges and vice versa.
 
 For several practical reasons, in most cases, experiment length are typically longer than experiment width but good not to make assumptions. There may be some cases when your experiment is part of a larger experiment, you many fewer ranges than runs, in that case your experiment length might be smaller that experiment width.
 
-Run and Range may not the terminology you use. Rows, Runs, Row, Run, rowNo, runNo, row_Num, run_NUm are aliases for Runs that we have encountered. Similarly for Range, column, Column, col etc are used as alias. Tt is hard to deal with so many aliases, so try to be consistent and where needed provide what alias is being used in your experiment.
+Run and Range may not the terminology you use. Rows, Runs, Row, Run, rowNo, runNo, row_Num, run_NUm are aliases for Runs that we have encountered. Similarly for Range, column, Column, col etc are used as alias. It is hard to deal with so many aliases, so try to be consistent and where needed provide what alias is being used in your experiment.
 
 ```{r Experiment layout example}
 
