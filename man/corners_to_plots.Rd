@@ -10,6 +10,7 @@ corners_to_plots(
   exp_width,
   n_runs,
   n_ranges,
+  exp_orientation = NULL,
   plot_length = NULL,
   plot_width = NULL
 )
@@ -24,6 +25,8 @@ corners_to_plots(
 \item{n_runs}{Number of runs in the experiment, typically along the shorter side of the experiment.}
 
 \item{n_ranges}{Number of ranges in the experiment, typically along the longer side of the experiment.}
+
+\item{exp_orientation}{OPTIONAL. Orientation of runs in the experiment. Takes "NS" or "EW", Default is "NS". NS is North-South; EW is East-West}
 
 \item{plot_length}{OPTIONAL. Numeric value. Length of a plot in meters}
 

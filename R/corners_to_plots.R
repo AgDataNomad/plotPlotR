@@ -16,6 +16,7 @@
 #' @param exp_width Total width of the experiment in unit meter
 #' @param n_runs Number of runs in the experiment, typically along the shorter side of the experiment.
 #' @param n_ranges Number of ranges in the experiment, typically along the longer side of the experiment.
+#' @param exp_orientation OPTIONAL. Orientation of runs in the experiment. Takes "NS" or "EW", Default is "NS". NS is North-South; EW is East-West
 #' @param plot_length OPTIONAL. Numeric value. Length of a plot in meters
 #' @param plot_width OPTIONAL. Numeric value. Width of a plot in meters
 #'
@@ -31,7 +32,18 @@
 #'plot(plots_dat)
 #'
 corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges,
+                             exp_orientation = NULL,
                              plot_length = NULL, plot_width = NULL){
+
+  if (is.null(exp_orientation)){
+    rotation_angle <- rot_angle(sf_object=sf_object)
+  } else if (exp_orientation=="NS") {
+    rotation_angle <- rot_angle(sf_object=sf_object)
+  } else if (exp_orientation == "EW"){
+    rotation_angle <- rot_angle(sf_object=sf_object)+deg_2_rad(180)
+  } else {
+    stop("exp_orientation expects a value of 'NS' or 'EW'")
+  }
 
   if("sf" %in% class(sf_object)){
     sf_object
