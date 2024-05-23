@@ -4,10 +4,16 @@
 \alias{make_split_plots}
 \title{Create split plot centers}
 \usage{
-make_split_plots(sf_obj, split_dist, split_into, plot_length, plot_width)
+make_split_plots(
+  plot_layout,
+  split_dist = NULL,
+  split_into = NULL,
+  plot_length,
+  plot_width
+)
 }
 \arguments{
-\item{sf_obj}{A sf object from a shape file, shp or geojson}
+\item{plot_layout}{A sf object from a shape file, shp or geojson}
 
 \item{split_dist}{Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.}
 
