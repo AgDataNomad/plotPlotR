@@ -334,25 +334,120 @@ is the file path with the desired extention type. For example
 <h2 id="creating-plot-layout">Creating plot layout<a class="anchor" aria-label="anchor" href="#creating-plot-layout"></a>
 </h2>
 <p>Creating plot layout is the core function of the
-<strong>plotPlotR</strong> package. Creating plots can be done in one of
-two ways depending on what information is available.</p>
+<strong>plotPlotR</strong> package and it can be done in one of two ways
+depending on what information is available.</p>
 <ol style="list-style-type: decimal">
-<li>From 4 coordinates or sets of 4 coordinates, center of which is the
-center of the experiment. <code>corners_to_plots</code> function is used
-to generate plot layouts from the corner points. The corner points can
-be generated using different ways, if you have a raster you can use
-<code>collect_corners</code> function to collect corners. Users can use
-google earth, QGIS, Ground Control Points data to get 4 corner
-points.</li>
+<li>From 4 coordinates or sets of 4 coordinates representing the corners
+of the experiment with center of corners being the center of the
+experiment. Function<code>corners_to_plots</code> is used to generate
+plot layouts from the corner points. The corner points, themselves can
+be generated using different ways, if you have a raster you can use the
+function <code>collect_corners</code> to get corner points. Users can
+also use services such as google earth, QGIS, Ground Control Points data
+to get 4 corner points.</li>
 <li>From trip points generated from tractors/seeders etc using the
 <code>make_plots</code> function. Modern tractors uses GPS or similar
 systems to drive on a paddock to sow seeds etc. These trip points, one
-for each plot can be used to create a field layout.</li>
+for each plot can be used to create a field layout. Variation of make
+plots, is splits plots, where two or three varieties are sown in each
+plot. Users can use <code>make_split_plots</code> function to generate
+split plots from one trip point or from the plot layout generated using
+<code>corners_to_plots</code>
+</li>
 </ol>
 <div class="section level3">
 <h3 id="corners-to-plots">Corners to plots<a class="anchor" aria-label="anchor" href="#corners-to-plots"></a>
 </h3>
-<p>coming soon….</p>
+<p><code>corners_to_plots</code> uses corners data provided to calculate
+the center and the orientation of the experiment. From the exp_length,
+exp_width, n_runs, n_ranges arguments a rectangular grid with the
+specified number of Runs and Ranges are generated.</p>
+<p>Optional <code>exp_orientation</code> sets the orientation of the
+experiment, Runs can be aligned North-South (vertically) or East-West
+(horizontally) in the rectangular grid. Sizes of plots generated can be
+customised using the optional <code>plot_length</code> and
+<code>plot_width</code> argument.</p>
+<p>NOTE: Orientation of the exp is correlated to experiment length
+<code>exp_length</code>, the orientation of the <code>Run</code>, length
+of the plots. If the orientation of the experiment is in
+<strong>NS</strong>, then the <code>exp_length</code>,
+<code>plot_length</code> and the <code>Run</code> are in the same
+direction.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
+<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
+<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>,</span>
+<span>                               exp_length <span class="op">=</span> <span class="fl">80</span>,</span>
+<span>                               exp_width <span class="op">=</span> <span class="fl">40</span>,</span>
+<span>                               n_runs <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                               n_ranges <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p>Changing the orientation of the experiment to <strong>EW</strong>
+East-West using the optional <code>exp_orientation</code> argument</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
+<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
+<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>,</span>
+<span>                               exp_length <span class="op">=</span> <span class="fl">80</span>,</span>
+<span>                               exp_width <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>                               n_runs <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                               n_ranges <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                               exp_orientation <span class="op">=</span> <span class="st">"EW"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>Specifying plot length and plot width using the OPTIONAL
+<code>plot_length</code> and <code>plot_width</code> argument</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
+<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
+<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>,</span>
+<span>                               exp_length <span class="op">=</span> <span class="fl">80</span>,</span>
+<span>                               exp_width <span class="op">=</span> <span class="fl">40</span>,</span>
+<span>                               n_runs <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                               n_ranges <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                               plot_length <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>                               plot_width <span class="op">=</span> <span class="fl">8.6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="points-to-plots">Points to plots<a class="anchor" aria-label="anchor" href="#points-to-plots"></a>
+</h3>
+<p>If you have coordinates (points) for each plot in the experiment, say
+from a seeder or other device, the function <code><a href="../reference/make_plots.html">make_plots()</a></code>
+can be used to create plot layouts of the experiment.
+<code>make_plots</code> function takes coordinates as points (a shape
+file or an sf object with POINT geometry) as input and using the
+<code>plot_length()</code> and <code>plot_width()</code> arguments
+generates the plot layout.</p>
+<p>In the below example, I am using <code>cornersData</code> as
+coordinates of 4 plots. Then using <code><a href="../reference/make_plots.html">make_plots()</a></code> function, I
+am generating a plot layout.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
+<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
+<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_layout</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_plots.html">make_plots</a></span><span class="op">(</span>sf_obj <span class="op">=</span> <span class="va">dat</span>, </span>
+<span>                          plot_length <span class="op">=</span> <span class="fl">75</span>, </span>
+<span>                          plot_width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plot_layout</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
