@@ -36,11 +36,17 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges,
                              plot_length = NULL, plot_width = NULL){
 
   if (is.null(exp_orientation)){
-    rotation_angle <- rot_angle(sf_object=sf_object)
+    if (1.5*exp_length>exp_width){
+      rotation_angle <- rot_angle(sf_object=sf_object)
+      print("make sure the orientation is correct!!")
+    } else {
+      rotation_angle <- rot_angle(sf_object=sf_object)+deg_2_rad(90)
+      print("make sure the orientation is correct!!")
+    }
   } else if (exp_orientation=="NS") {
     rotation_angle <- rot_angle(sf_object=sf_object)
   } else if (exp_orientation == "EW"){
-    rotation_angle <- rot_angle(sf_object=sf_object)+deg_2_rad(180)
+    rotation_angle <- rot_angle(sf_object=sf_object)+deg_2_rad(90)
   } else {
     stop("exp_orientation expects a value of 'NS' or 'EW'")
   }
@@ -52,8 +58,6 @@ corners_to_plots <- function(sf_object, exp_length, exp_width, n_runs, n_ranges,
       rename(X = 1, Y = 2) %>%
       st_as_sf(coords = c("X", "Y"))
   }
-
-  rotation_angle <- rot_angle(sf_object=sf_object)
 
   centrd <- sf_object %>%
     st_union() %>%
