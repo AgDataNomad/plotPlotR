@@ -156,16 +156,76 @@ dat <- read_input_dat(input_dat = cornersData,
 
 ## Creating plot layout
 
-Creating plot layout is the core function of the **plotPlotR** package. Creating plots can be done in one of two ways depending on what information is available.
+Creating plot layout is the core function of the **plotPlotR** package and it can be done in one of two ways depending on what information is available.
 
-1. From 4 coordinates or sets of 4 coordinates, center of which is the center of the experiment. `corners_to_plots` function is used to generate plot layouts from the corner points. The corner points can be generated using different ways, if you have a raster you can use `collect_corners` function to collect corners. Users can use google earth, QGIS, Ground Control Points data to get 4 corner points. 
-2. From trip points generated from tractors/seeders etc using the `make_plots` function. Modern tractors uses GPS or similar systems to drive on a paddock to sow seeds etc. These trip points, one for each plot can be used to create a field layout.  
+1. From 4 coordinates or sets of 4 coordinates representing the corners of the experiment with center of corners being the center of the experiment. Function`corners_to_plots` is used to generate plot layouts from the corner points. The corner points, themselves can be generated using different ways, if you have a raster you can use the function `collect_corners` to get corner points. Users can also use services such as google earth, QGIS, Ground Control Points data to get 4 corner points. 
+2. From trip points generated from tractors/seeders etc using the `make_plots` function. Modern tractors uses GPS or similar systems to drive on a paddock to sow seeds etc. These trip points, one for each plot can be used to create a field layout. Variation of make plots, is splits plots, where two or three varieties are sown in each plot. Users can use `make_split_plots` function to generate split plots from one trip point or from the plot layout generated using `corners_to_plots`
 
 ### Corners to plots
 
-coming soon....
+`corners_to_plots` uses corners data provided to calculate the center and the orientation of the experiment. From the exp_length, exp_width, n_runs, n_ranges arguments a rectangular grid with the specified number of Runs and Ranges are generated. 
+
+Optional `exp_orientation` sets the orientation of the experiment, Runs can be aligned North-South (vertically) or East-West (horizontally) in the rectangular grid. Sizes of plots generated can be customised using the optional `plot_length` and `plot_width` argument.
+
+NOTE: Orientation of the exp is correlated to experiment length `exp_length`, the orientation of the `Run`, length of the plots. If the orientation of the experiment is in **NS**, then the `exp_length`, `plot_length` and the `Run` are in the same direction.
+
+```{r}
+
+dat <- read_input_dat(input_dat = cornersData,
+                      input_CRS = 4326,
+                      to_CRS_M = 28355)
+
+plots_data <- corners_to_plots(sf_object = dat,
+                               exp_length = 80,
+                               exp_width = 40,
+                               n_runs = 2,
+                               n_ranges = 4)
+
+plot(plots_data)
+
+```
 
 
+Changing the orientation of the experiment to **EW** East-West using the optional `exp_orientation` argument
+
+```{r}
+
+dat <- read_input_dat(input_dat = cornersData,
+                      input_CRS = 4326,
+                      to_CRS_M = 28355)
+
+plots_data <- corners_to_plots(sf_object = dat,
+                               exp_length = 80,
+                               exp_width = 20,
+                               n_runs = 2,
+                               n_ranges = 4,
+                               exp_orientation = "EW")
+
+plot(plots_data)
+
+```
+
+Specifying plot length and plot width using the OPTIONAL `plot_length` and `plot_width` argument
+
+```{r}
+
+dat <- read_input_dat(input_dat = cornersData,
+                      input_CRS = 4326,
+                      to_CRS_M = 28355)
+
+plots_data <- corners_to_plots(sf_object = dat,
+                               exp_length = 80,
+                               exp_width = 40,
+                               n_runs = 2,
+                               n_ranges = 4,
+                               plot_length = 15,
+                               plot_width = 8.6)
+
+plot(plots_data)
+
+```
+
+### 
 
 
 
