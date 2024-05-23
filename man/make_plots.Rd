@@ -4,17 +4,17 @@
 \alias{make_plots}
 \title{Make plots from points i.e. plot centers or use to adjust length and the width of plots in an existing plot layout}
 \usage{
-make_plots(sf_obj, plot_length, plot_width)
+make_plots(points_data, plot_length, plot_width)
 }
 \arguments{
-\item{sf_obj}{A sf object with geometry type POINTS referring to plot center or POLYGONS}
+\item{points_data}{A sf object with geometry type POINTS referring to plot center or POLYGONS}
 
 \item{plot_length}{Length of individual plots}
 
 \item{plot_width}{Width of individual plots}
 }
 \value{
-A sf object of geometry type POLYGON with the same CRS as input sf_obj
+A sf object of geometry type POLYGON with the same CRS as input points_data
 }
 \description{
 Make plots from points i.e. plot centers or use to adjust length and the width of plots in an existing plot layout
