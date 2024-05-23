@@ -33,16 +33,16 @@ rot_angle <- function(sf_object){
     filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y))) %>%
     distinct(X,Y)
 
-  # x_dist <- max(corners_poly$X)-min(corners_poly$X)
-  # y_dist <- max(corners_poly$Y)-min(corners_poly$Y)
-
-  # if (x_dist<y_dist) {
-  #   corners_poly <- corners_poly %>%
-  #     arrange(Y, X)
-  # } else {
-  #   corners_poly <- corners_poly %>%
-  #     arrange(X, Y)
-  # }
+  corners_poly <- corners_poly %>%
+    arrange(Y, X) %>%
+    mutate(id = c("B","B","T","T")) %>%
+    arrange(id, X) %>%
+    mutate(id2 = c("L","R","L", "R")) %>%
+    mutate(ord = paste0(id, id2)) %>%
+    left_join(tibble(ord = c("BL", "TL", "TR", "BR"),
+                     ord_by = c(3,1,2,4)), by = "ord") %>%
+    arrange(ord_by) %>%
+    select(X,Y)
 
   a <- corners_poly[,1]
   b <- corners_poly[,2]
