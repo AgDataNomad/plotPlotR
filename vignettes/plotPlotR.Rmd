@@ -225,7 +225,28 @@ plot(plots_data)
 
 ```
 
-### 
+### Points to plots
+
+If you have coordinates (points) for each plot in the experiment, say from a seeder or other device, the function `make_plots()` can be used to create plot layouts of the experiment. `make_plots` function takes coordinates as points (a shape file or an sf object with POINT geometry) as input and using the `plot_length()` and `plot_width()` arguments generates the plot layout.
+
+In the below example, I am using `cornersData` as coordinates of 4 plots. Then using `make_plots()` function, I am generating a plot layout.   
+
+```{r}
+
+dat <- read_input_dat(input_dat = cornersData,
+                      input_CRS = 4326,
+                      to_CRS_M = 28355)
+
+plot_layout <- make_plots(sf_obj = dat, 
+                          plot_length = 75, 
+                          plot_width = 20)
+
+plot(plot_layout)
+
+```
+
+
+
 
 
 
