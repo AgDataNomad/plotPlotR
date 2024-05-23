@@ -4,7 +4,7 @@
 #'
 #' This is to support type of sowing where the seeder can sow more than one variety in each plot.
 #'
-#' @param sf_obj A sf object from a shape file, shp or geojson
+#' @param plot_layout A sf object from a shape file, shp or geojson
 #' @param split_dist Numeric input in meters indicating the amount of offset from plot center to use in creating new plots.
 #' @param split_into Integer input, number of new plots to generate from one plot, takes 1 or 2
 #' @param plot_length Numeric input, Length of plot in meters.
@@ -23,29 +23,29 @@
 #'
 #' plot(dat_split_plots)
 #'
-make_split_plots <- function(sf_obj, split_dist, split_into, plot_length, plot_width){
+make_split_plots <- function(plot_layout, split_dist=NULL, split_into=NULL, plot_length, plot_width){
 
-  if (missing(split_into)){
+  if (is.null(split_into)){
     split_into <-  2
   } else {
     split_into
   }
 
-  if (missing(split_dist)){
+  if (is.null(split_dist)){
     split_dist <- 0.45
   } else {
     split_dist
   }
 
-  x_off <- -(cos(rot_angle(sf_obj)))
-  y_off <- (sin(rot_angle(sf_obj)))
+  x_off <- -(cos(rot_angle(plot_layout)))
+  y_off <- (sin(rot_angle(plot_layout)))
 
-  suppressWarnings(sf_cen <- sf_obj %>%
+  suppressWarnings(sf_cen <- plot_layout %>%
                      st_centroid() %>%
                      st_coordinates() %>%
                      as.data.frame())
 
-  sfc_df <- bind_cols(sf_cen, st_drop_geometry(sf_obj))
+  sfc_df <- bind_cols(sf_cen, st_drop_geometry(plot_layout))
 
   ardf <- sfc_df %>%
     filter(X %in% c(min(X), max(X)) | Y %in% c(min(Y), max(Y)))
@@ -71,7 +71,7 @@ make_split_plots <- function(sf_obj, split_dist, split_into, plot_length, plot_w
     split_sf <- bind_rows(left_sf, cen_sf, right_sf)
   }
 
-  st_crs(split_sf) <- st_crs(sf_obj)
+  st_crs(split_sf) <- st_crs(plot_layout)
 
   split_sf <- make_plots(split_sf, plot_length = plot_length, plot_width = plot_width)
 
