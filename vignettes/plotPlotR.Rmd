@@ -237,7 +237,7 @@ dat <- read_input_dat(input_dat = cornersData,
                       input_CRS = 4326,
                       to_CRS_M = 28355)
 
-plot_layout <- make_plots(sf_obj = dat, 
+plot_layout <- make_plots(points_data = dat, 
                           plot_length = 75, 
                           plot_width = 20)
 
@@ -245,8 +245,31 @@ plot(plot_layout)
 
 ```
 
+### Split plots
 
+Split plots are type of field experiments where more than one genotype/variety is sown at each plot. `make_split_plots()` function allows users to create a split plot layout from plot center points or from plot layouts generated using `corners_to_plots`. 
 
+```{r}
+
+dat <- read_input_dat(cornersData, 4326, 28355)
+
+oneplot <- corners_to_plots(dat, 
+                            exp_length = 80, 
+                            exp_width = 30, 
+                            n_runs = 5,
+                            n_ranges = 8)
+
+split_plot_layout <- make_split_plots(oneplot,
+                                      split_dist = 2,
+                                      split_into = 2,
+                                      plot_length = 7.5,
+                                      plot_width = 2)
+
+plot(split_plot_layout)
+
+```
+
+## Plot manipulation
 
 
 
