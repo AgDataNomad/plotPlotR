@@ -70,7 +70,8 @@ make_plots <- function(points_data, plot_length, plot_width){
     mutate(geometry = st_combine(geometry)) %>%
     st_cast("POLYGON") %>%
     ungroup() %>%
-    distinct_all()
+    distinct_all() %>%
+    select(-L2)
 
   print(rad_2_deg(rot_angle(points_data)))
 
