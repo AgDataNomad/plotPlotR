@@ -11,7 +11,7 @@
 #' @examples
 moveAllPlots <- function(sf_obj, xy_move){
 
-  if (length(xy)!=2){
+  if (length(xy_move)!=2){
     stop("Provide a vector of length 2")
   } else if (!inherits(xy_move, "numeric")){
     stop("Please provide numeric values")
