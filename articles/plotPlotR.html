@@ -484,8 +484,38 @@ experimental layouts in a few different ways. For easier transformation,
 plots needs to be identified by its coordinates, i.e. each plot get
 assigned values of Run and Range. Runs and Ranges are a common local
 coordinate reference system used in field experiment to identify a plot.
-Runs and Ranges are unique to one experiment and has no universal</p>
+Runs and Ranges are unique to each experiment and has no absolute
+reference to the experiment spatially. This simple system however is
+quite useful and adequate for people working on field experiments.</p>
+<div class="section level3">
+<h3 id="adding-run-and-range-values">Adding Run and Range values<a class="anchor" aria-label="anchor" href="#adding-run-and-range-values"></a>
+</h3>
+<p><code><a href="../reference/addRunRange.html">addRunRange()</a></code> function adds Run and Range values to the
+plots in the experiment. For assigning Run and Range values, users need
+to provide three pieces of information. The number of Runs using the
+<code>n_runs</code> argument, number of Ranges using the
+<code>n_ranges</code> argument and the position of the Row 1 and Range 1
+using the <code>run1_range1</code> argument. The argument
+<code>run1_range1</code> takes one of 4 values from “TR”, “TL”, “BR” and
+“BL” which represents top right, top left, bottom right and bottom left
+respectively.</p>
+<p><em>NOTE: The southern end is the bottom of an experiment in
+North-South direction and similarly the eastern end is the bottom of the
+experiment in the East-West direction. Assuming someone standing at the
+bottom of their experiment looking at the top end, their left side is
+the left side of the experiment and similarly their right side is the
+right side of the experiment. </em></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/addRunRange.html">addRunRange</a></span><span class="op">(</span><span class="va">plots_data</span>, </span>
+<span>                          run1_range1 <span class="op">=</span> <span class="st">"BL"</span>,</span>
+<span>                          n_runs <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                          n_ranges <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 <p>Lets explore few transformations</p>
+</div>
 <div class="section level3">
 <h3 id="rotating-the-whole-experiment-layout">Rotating the whole experiment layout<a class="anchor" aria-label="anchor" href="#rotating-the-whole-experiment-layout"></a>
 </h3>
@@ -494,38 +524,84 @@ its center by the value provided in the <code>rotation_angle</code>
 argument. Users can rotate the whole experiment or just the plots using
 the <code>selection</code> option. Rotation angle is declared in degrees
 and can be positive or negative value.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotPlotR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">rotated_exp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rot_plots.html">rot_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">plots_data</span>, rotation_angle <span class="op">=</span> <span class="fl">90</span>, selection <span class="op">=</span> <span class="st">"experiment"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rotated_exp</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotPlotR_files/figure-html/unnamed-chunk-11-2.png" width="700"></p>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-2.png" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="rotating-individual-plots">Rotating individual plots<a class="anchor" aria-label="anchor" href="#rotating-individual-plots"></a>
 </h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<p>Rotating individual plots is similar to rotating the entire
+experiment, only difference being the orientation of the experiment will
+be the same and individuals plots were rotated on its axis.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">rotated_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rot_plots.html">rot_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">plots_data</span>, rotation_angle <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>, selection <span class="op">=</span> <span class="st">"plots"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rotated_plots</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-2.png" width="700"></p>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-13-2.png" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="plot-displacement">Plot displacement<a class="anchor" aria-label="anchor" href="#plot-displacement"></a>
 </h3>
 <p>Plots (or experiments as a whole) can be moved horizontally,
-vertically, along its run or range or along North-South or East-West
-direction in a number of ways using <strong>plotPlotR</strong>. Some of
-the transformations require</p>
+vertically, along its run or range or along the compass direction in a
+number of ways using functions in <strong>plotPlotR</strong>.</p>
+<p>Moving runs can be done using the <code><a href="../reference/movePlotRuns.html">movePlotRuns()</a></code>
+function. Movement of plots are done through two arguments,
+<code>moveDirection</code> and <code>moveDistane</code>.
+<code>moveDirection</code> takes “left”, “right”, “up” or “down” and
+<code>moveDistance</code> takes a distance value in meters. There is a
+optional argument <code>runSelection</code>, which when not supplied
+applies the movement to all plots.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">moved_run</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/movePlotRuns.html">movePlotRuns</a></span><span class="op">(</span><span class="va">plots_data</span>, moveDirection <span class="op">=</span> <span class="st">"up"</span>, moveDistance <span class="op">=</span> <span class="fl">5</span>, runSelection <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">moved_run</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p>Similarly plots can be moved range wise. By default when
+<code>rangeSelection</code> is not supplied, all Ranges are moved.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">moved_range</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/movePlotRanges.html">movePlotRanges</a></span><span class="op">(</span><span class="va">plots_data</span>, moveDirection <span class="op">=</span> <span class="st">"right"</span>, moveDistance <span class="op">=</span> <span class="fl">5</span>, rangeSelection <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">moved_range</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p>Entire experimental layout can be moved north, south, west or east
+direction using the <code><a href="../reference/moveAllPlots.html">moveAllPlots()</a></code> function through
+supplying distance to move horizontally and vertically.
+<code>xy_move</code> is a vector of length two, first element is the
+distance to move in X direction and the second element being the Y
+direction.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/moveAllPlots.html">moveAllPlots</a></span><span class="op">(</span><span class="va">plots_data</span>, xy_move <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 8 features and 2 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 654927.400918932 ymin: 6184372.25402825 xmax: 654961.713911517 ymax: 6184449.24073325</span></span>
+<span><span class="co">#&gt; Projected CRS: GDA94 / MGA zone 55</span></span>
+<span><span class="co">#&gt;   Run Range                       geometry</span></span>
+<span><span class="co">#&gt; 1   1     1 POLYGON ((654933.1995187080...</span></span>
+<span><span class="co">#&gt; 2   2     1 POLYGON ((654953.1396535396...</span></span>
+<span><span class="co">#&gt; 3   1     2 POLYGON ((654931.6532254343...</span></span>
+<span><span class="co">#&gt; 4   2     2 POLYGON ((654951.5933602662...</span></span>
+<span><span class="co">#&gt; 5   1     3 POLYGON ((654930.1069321610...</span></span>
+<span><span class="co">#&gt; 6   2     3 POLYGON ((654950.0470669928...</span></span>
+<span><span class="co">#&gt; 7   1     4 POLYGON ((654928.5606388874...</span></span>
+<span><span class="co">#&gt; 8   2     4 POLYGON ((654948.5007737195...</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
