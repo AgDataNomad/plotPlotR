@@ -1,6 +1,7 @@
 exportPattern("^[[:alpha:]]+")
 import(dplyr)
 import(sf)
+importFrom("grDevices", "dev.new")
 importFrom(magrittr,"%>%")
 importFrom(terra, "click")
 importFrom(terra, "plot")
