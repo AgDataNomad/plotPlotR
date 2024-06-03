@@ -30,7 +30,7 @@ library(plotPlotR)
 
 **plotPlotR** package is developed to provide R users involved in field experiments to create or manipulate geo-spatial plot layouts for their experiments. This package is small and has a handful of functions to perform QGIS like field plot creation and manipulation which then can be used to extract values from different types of raster or adding values to plots and create shapefiles etc.
 
-This package is particularly useful for users when working on raster data generated from UAVs or if users want to associate non-spatial data to the plot data.
+This package is particularly useful for users when working on raster data generated from Unmanned Aerial Vehicles (drones, UAVs) or if users want to associate non-spatial data to the plot data.
 
 The core of plotPlotR is the creation of plot segments. If you have obtained corner points from [Google Maps](https://www.google.com/maps), [Google Earth](https://earth.google.com/web/), GPS sensors on farm machine or from a GPS survey tool, then you will be able to create plots easily using the functions in this package. You can also assign Run and Range values to your plots which then can then be moved both vertically and horizontally to account for any discrepancies.
 
@@ -190,10 +190,6 @@ Changing the orientation of the experiment to **EW** East-West using the optiona
 
 ```{r}
 
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326,
-                      to_CRS_M = 28355)
-
 plots_data <- corners_to_plots(sf_object = dat,
                                exp_length = 80,
                                exp_width = 20,
@@ -208,10 +204,6 @@ plot(plots_data)
 Specifying plot length and plot width using the OPTIONAL `plot_length` and `plot_width` argument
 
 ```{r}
-
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326,
-                      to_CRS_M = 28355)
 
 plots_data <- corners_to_plots(sf_object = dat,
                                exp_length = 80,
@@ -233,10 +225,6 @@ In the below example, I am using `cornersData` as coordinates of 4 plots. Then u
 
 ```{r}
 
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326,
-                      to_CRS_M = 28355)
-
 plot_layout <- make_plots(points_data = dat, 
                           plot_length = 75, 
                           plot_width = 20)
@@ -250,8 +238,6 @@ plot(plot_layout)
 Split plots are type of field experiments where more than one genotype/variety is sown at each plot. `make_split_plots()` function allows users to create a split plot layout from plot center points or from plot layouts generated using `corners_to_plots`. 
 
 ```{r}
-
-dat <- read_input_dat(cornersData, 4326, 28355)
 
 oneplot <- corners_to_plots(dat, 
                             exp_length = 80, 
@@ -271,5 +257,37 @@ plot(split_plot_layout)
 
 ## Plot manipulation
 
+**plotPlotR** provides functions to transform experimental layouts in a few different ways. For easier transformation, plots needs to be identified by its coordinates, i.e. each plot get assigned values of Run and Range. Runs and Ranges are a common local coordinate reference system used in field experiment to identify a plot. Runs and Ranges are unique to one experiment and has no universal 
 
+Lets explore few transformations
+
+### Rotating the whole experiment layout
+
+`rot_plots()` functions takes a sf-object and rotate on its center by the value provided in the `rotation_angle` argument. Users can rotate the whole experiment or just the plots using the `selection` option. Rotation angle is declared in degrees and can be positive or negative value.  
+
+```{r}
+
+plot(plots_data)
+
+rotated_exp <- rot_plots(sf_object = plots_data, rotation_angle = 90, selection = "experiment")
+
+plot(rotated_exp)
+
+```
+
+### Rotating individual plots
+
+```{r}
+
+plot(plots_data)
+
+rotated_plots <- rot_plots(sf_object = plots_data, rotation_angle = -10, selection = "plots")
+
+plot(rotated_plots)
+
+```
+
+### Plot displacement
+
+Plots (or experiments as a whole) can be moved horizontally, vertically, along its run or range or along North-South or East-West direction in a number of ways using **plotPlotR**. Some of the transformations require   
 
