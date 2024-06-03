@@ -257,7 +257,25 @@ plot(split_plot_layout)
 
 ## Plot manipulation
 
-**plotPlotR** provides functions to transform experimental layouts in a few different ways. For easier transformation, plots needs to be identified by its coordinates, i.e. each plot get assigned values of Run and Range. Runs and Ranges are a common local coordinate reference system used in field experiment to identify a plot. Runs and Ranges are unique to one experiment and has no universal 
+**plotPlotR** provides functions to transform experimental layouts in a few different ways. For easier transformation, plots needs to be identified by its coordinates, i.e. each plot get assigned values of Run and Range. Runs and Ranges are a common local coordinate reference system used in field experiment to identify a plot. Runs and Ranges are unique to each experiment and has no absolute reference to the experiment spatially. This simple system however is quite useful and adequate for people working on field experiments.  
+
+### Adding Run and Range values
+
+`addRunRange()` function adds Run and Range values to the plots in the experiment. For assigning Run and Range values, users need to provide three pieces of information. The number of Runs using the `n_runs` argument, number of Ranges using the `n_ranges` argument and the position of the Row 1 and Range 1 using the `run1_range1` argument. The argument `run1_range1` takes one of 4 values from "TR", "TL", "BR" and "BL" which represents top right, top left, bottom right and bottom left respectively. 
+
+*NOTE: The southern end is the bottom of an experiment in North-South direction and similarly the eastern end is the bottom of the experiment in the East-West direction. Assuming someone standing at the bottom of their experiment looking at the top end, their left side is the left side of the experiment and similarly their right side is the right side of the experiment. *
+
+```{r}
+
+plots_data <- addRunRange(plots_data, 
+                          run1_range1 = "BL",
+                          n_runs = 2,
+                          n_ranges = 4)
+
+plot(plots_data)
+
+```
+
 
 Lets explore few transformations
 
@@ -277,6 +295,8 @@ plot(rotated_exp)
 
 ### Rotating individual plots
 
+Rotating individual plots is similar to rotating the entire experiment, only difference being the orientation of the experiment will be the same and individuals plots were rotated on its axis. 
+
 ```{r}
 
 plot(plots_data)
@@ -289,5 +309,34 @@ plot(rotated_plots)
 
 ### Plot displacement
 
-Plots (or experiments as a whole) can be moved horizontally, vertically, along its run or range or along North-South or East-West direction in a number of ways using **plotPlotR**. Some of the transformations require   
+Plots (or experiments as a whole) can be moved horizontally, vertically, along its run or range or along the compass direction in a number of ways using functions in **plotPlotR**. 
+
+Moving runs can be done using the `movePlotRuns()` function. Movement of plots are done through two arguments, `moveDirection` and `moveDistane`. `moveDirection` takes "left", "right", "up" or "down" and `moveDistance` takes a distance value in meters. There is a optional argument `runSelection`, which when not supplied applies the movement to all plots.
+
+```{r}
+
+moved_run <- movePlotRuns(plots_data, moveDirection = "up", moveDistance = 5, runSelection = 2)
+
+plot(moved_run)
+
+```
+
+Similarly plots can be moved range wise. By default when `rangeSelection` is not supplied, all Ranges are moved. 
+
+```{r}
+
+moved_range <- movePlotRanges(plots_data, moveDirection = "right", moveDistance = 5, rangeSelection = 2)
+
+plot(moved_range)
+
+```
+
+Entire experimental layout can be moved north, south, west or east direction using the `moveAllPlots()` function through supplying distance to move horizontally and vertically. `xy_move` is a vector of length two, first element is the distance to move in X direction and the second element being the Y direction. 
+
+```{r}
+
+moveAllPlots(plots_data, xy_move = c(2,4))
+
+```
+
 
