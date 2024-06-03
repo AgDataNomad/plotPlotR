@@ -55,10 +55,17 @@ cornersData # dataframe with 4 XY points corresponding to four corners of an exp
 #> 2 148.6873 -34.47062  4
 #> 3 148.6869 -34.46992  2
 #> 4 148.6872 -34.46990  3
+```
+
+``` r
 
 dat <- read_input_dat(cornersData, 4326, 28355) # Reading data and converting to unit M CRS
 
 dat_plots <- corners_to_plots(dat, 80, 24.2, 11, 20)
+#> [1] "make sure the orientation is correct!!"
+```
+
+``` r
 
 dat_plots <- addRunRange(dat_plots, "BL", n_runs = 11, n_ranges = 20)
 
