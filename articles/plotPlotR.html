@@ -99,8 +99,8 @@ of functions to perform QGIS like field plot creation and manipulation
 which then can be used to extract values from different types of raster
 or adding values to plots and create shapefiles etc.</p>
 <p>This package is particularly useful for users when working on raster
-data generated from UAVs or if users want to associate non-spatial data
-to the plot data.</p>
+data generated from Unmanned Aerial Vehicles (drones, UAVs) or if users
+want to associate non-spatial data to the plot data.</p>
 <p>The core of plotPlotR is the creation of plot segments. If you have
 obtained corner points from <a href="https://www.google.com/maps" class="external-link">Google
 Maps</a>, <a href="https://earth.google.com/web/" class="external-link">Google Earth</a>, GPS
@@ -395,10 +395,6 @@ direction.</p>
 East-West using the optional <code>exp_orientation</code> argument</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
-<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
-<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>,</span>
 <span>                               exp_length <span class="op">=</span> <span class="fl">80</span>,</span>
 <span>                               exp_width <span class="op">=</span> <span class="fl">20</span>,</span>
@@ -412,10 +408,6 @@ East-West using the optional <code>exp_orientation</code> argument</p>
 <code>plot_length</code> and <code>plot_width</code> argument</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
-<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
-<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">plots_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">dat</span>,</span>
 <span>                               exp_length <span class="op">=</span> <span class="fl">80</span>,</span>
 <span>                               exp_width <span class="op">=</span> <span class="fl">40</span>,</span>
@@ -445,10 +437,6 @@ coordinates of 4 plots. Then using <code><a href="../reference/make_plots.html">
 am generating a plot layout.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span>input_dat <span class="op">=</span> <span class="va">cornersData</span>,</span>
-<span>                      input_CRS <span class="op">=</span> <span class="fl">4326</span>,</span>
-<span>                      to_CRS_M <span class="op">=</span> <span class="fl">28355</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">plot_layout</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_plots.html">make_plots</a></span><span class="op">(</span>points_data <span class="op">=</span> <span class="va">dat</span>, </span>
 <span>                          plot_length <span class="op">=</span> <span class="fl">75</span>, </span>
 <span>                          plot_width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
@@ -468,8 +456,6 @@ points or from plot layouts generated using
 <code>corners_to_plots</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_input_dat.html">read_input_dat</a></span><span class="op">(</span><span class="va">cornersData</span>, <span class="fl">4326</span>, <span class="fl">28355</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">oneplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/corners_to_plots.html">corners_to_plots</a></span><span class="op">(</span><span class="va">dat</span>, </span>
 <span>                            exp_length <span class="op">=</span> <span class="fl">80</span>, </span>
 <span>                            exp_width <span class="op">=</span> <span class="fl">30</span>, </span>
@@ -493,6 +479,54 @@ points or from plot layouts generated using
 <div class="section level2">
 <h2 id="plot-manipulation">Plot manipulation<a class="anchor" aria-label="anchor" href="#plot-manipulation"></a>
 </h2>
+<p><strong>plotPlotR</strong> provides functions to transform
+experimental layouts in a few different ways. For easier transformation,
+plots needs to be identified by its coordinates, i.e. each plot get
+assigned values of Run and Range. Runs and Ranges are a common local
+coordinate reference system used in field experiment to identify a plot.
+Runs and Ranges are unique to one experiment and has no universal</p>
+<p>Lets explore few transformations</p>
+<div class="section level3">
+<h3 id="rotating-the-whole-experiment-layout">Rotating the whole experiment layout<a class="anchor" aria-label="anchor" href="#rotating-the-whole-experiment-layout"></a>
+</h3>
+<p><code><a href="../reference/rot_plots.html">rot_plots()</a></code> functions takes a sf-object and rotate on
+its center by the value provided in the <code>rotation_angle</code>
+argument. Users can rotate the whole experiment or just the plots using
+the <code>selection</code> option. Rotation angle is declared in degrees
+and can be positive or negative value.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">rotated_exp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rot_plots.html">rot_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">plots_data</span>, rotation_angle <span class="op">=</span> <span class="fl">90</span>, selection <span class="op">=</span> <span class="st">"experiment"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rotated_exp</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-11-2.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="rotating-individual-plots">Rotating individual plots<a class="anchor" aria-label="anchor" href="#rotating-individual-plots"></a>
+</h3>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">plots_data</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">rotated_plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rot_plots.html">rot_plots</a></span><span class="op">(</span>sf_object <span class="op">=</span> <span class="va">plots_data</span>, rotation_angle <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>, selection <span class="op">=</span> <span class="st">"plots"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rotated_plots</span><span class="op">)</span></span></code></pre></div>
+<p><img src="plotPlotR_files/figure-html/unnamed-chunk-12-2.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="plot-displacement">Plot displacement<a class="anchor" aria-label="anchor" href="#plot-displacement"></a>
+</h3>
+<p>Plots (or experiments as a whole) can be moved horizontally,
+vertically, along its run or range or along North-South or East-West
+direction in a number of ways using <strong>plotPlotR</strong>. Some of
+the transformations require</p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
