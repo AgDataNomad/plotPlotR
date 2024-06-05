@@ -120,8 +120,6 @@ Here is an example of reading input data when the dataframe or the CSV file does
 
 ```{r}
 
-dat <- cornersData
-
 #rearranging and renaming columns and adding a new column to demonstrate read_input_dat function
 
 dat <- dat[,c(3,1,2)]
@@ -170,10 +168,6 @@ Optional `exp_orientation` sets the orientation of the experiment, Runs can be a
 NOTE: Orientation of the exp is correlated to experiment length `exp_length`, the orientation of the `Run`, length of the plots. If the orientation of the experiment is in **NS**, then the `exp_length`, `plot_length` and the `Run` are in the same direction.
 
 ```{r}
-
-dat <- read_input_dat(input_dat = cornersData,
-                      input_CRS = 4326,
-                      to_CRS_M = 28355)
 
 plots_data <- corners_to_plots(sf_object = dat,
                                exp_length = 80,
@@ -331,7 +325,7 @@ plot(moved_range)
 
 ```
 
-Entire experimental layout can be moved north, south, west or east direction using the `moveAllPlots()` function through supplying distance to move horizontally and vertically. `xy_move` is a vector of length two, first element is the distance to move in X direction and the second element being the Y direction. 
+Entire experimental layout can be moved along the north, south, west or east direction using the `moveAllPlots()` function. This function takes distance to move the experimental layout horizontally and vertically. `xy_move` is a vector of length two, first element is the distance to move in X direction and the second element is the distance to move in the Y direction. Distances can be positive or negative values. 
 
 ```{r}
 
@@ -339,4 +333,19 @@ moveAllPlots(plots_data, xy_move = c(2,4))
 
 ```
 
+### Plot resizing
+
+Sizes of plots in an experiment can be manipulated using the function `make_plots()`. This function usually takes points data and produce an experimental layout but can also be used to modify plot dimensions. Users can supply `plot_length` and `plot_width` arguments.
+
+```{r}
+
+modified_plot_dimensions <- make_plots(plots_data, 
+                                       plot_length = 15, 
+                                       plot_width = 15)
+
+#generating square plots with dimension 15 meters by 15 meters
+
+plot(modified_plot_dimensions)
+
+```
 
