@@ -12,6 +12,8 @@
 #' @examples
 get_plot <- function(raster_obj, vector_obj, plot_no=NULL, RGB=NULL, stretchRGB=FALSE){
 
+  vector_obj <- vect(vector_obj)
+
   if (is.null(plot_no)) {
     if (nrow(vector_obj)==1) {
       vector_obj
