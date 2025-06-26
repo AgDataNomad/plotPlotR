@@ -1,93 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/articles/plotPlotR.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/readme.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/addRunRange.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/collect_corners.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/cornersData.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/corners_to_plots.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/deg_2_rad.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/expand_points.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/get_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/make_plots.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/make_split_plots.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/moveAllPlots.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/movePlotRanges.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/movePlotRuns.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/multicorners_to_4corners.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/plotPlotR-package.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/rad_2_deg.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/read_input_dat.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/rot_angle.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/rot_plots.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/rot_shape.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/wgs84_to_unitM.html</loc>
-  </url>
-  <url>
-    <loc>https://agdatanomad.github.io/plotPlotR/reference/write_output_obj.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://agdatanomad.github.io/plotPlotR/404.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/LICENSE.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/articles/index.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/articles/plotPlotR.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/authors.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/index.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/news/index.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/readme.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/addRunRange.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/collect_corners.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/cornersData.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/corners_to_plots.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/deg_2_rad.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/expand_points.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/index.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/make_plots.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/make_split_plots.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/moveAllPlots.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/movePlotRanges.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/movePlotRuns.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/multicorners_to_4corners.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/plotPlotR-package.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/rad_2_deg.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/read_input_dat.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/rot_angle.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/rot_plots.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/rot_shape.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/wgs84_to_unitM.html</loc></url>
+<url><loc>https://agdatanomad.github.io/plotPlotR/reference/write_output_obj.html</loc></url>
 </urlset>
+
