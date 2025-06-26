@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   plotPlotR: plotPlotR.html
-last_built: 2025-06-26T00:55Z
+last_built: 2025-06-26T23:27Z
 urls:
   reference: https://agdatanomad.github.io/plotPlotR/reference
   article: https://agdatanomad.github.io/plotPlotR/articles
